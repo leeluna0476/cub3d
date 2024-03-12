@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.h                                            :+:      :+:    :+:   */
+/*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seojilee <seojilee@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/12 19:50:55 by seojilee          #+#    #+#             */
-/*   Updated: 2024/03/12 19:52:20 by seojilee         ###   ########.fr       */
+/*   Created: 2024/03/12 19:51:08 by seojilee          #+#    #+#             */
+/*   Updated: 2024/03/12 20:00:33 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSE_H
-# define PARSE_H
+#ifndef STRUCT_H
+# define STRUCT_H
 
-# include "parse_internal.h"
-# include <stdio.h>
-# include <fcntl.h>
+typedef struct s_map	t_map;
+
+struct s_map
+{
+	char	*north;
+	char	*south;
+	char	*west;
+	char	*east;
+
+	int		floor;
+	int		ceiling;
+
+	int		**map;
+};
 
 #endif

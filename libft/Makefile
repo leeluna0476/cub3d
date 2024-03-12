@@ -5,7 +5,6 @@ CFLAGS=-Wall -Wextra -Werror
 SRCS=\
 	 ft_abs.c \
 	 ft_atoi.c \
-	 ft_atol.c \
 	 ft_isalpha.c \
 	 ft_memchr.c \
 	 ft_memset.c \
