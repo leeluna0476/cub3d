@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.h                                            :+:      :+:    :+:   */
+/*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seojilee <seojilee@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/12 19:50:55 by seojilee          #+#    #+#             */
-/*   Updated: 2024/03/13 14:50:12 by seojilee         ###   ########.fr       */
+/*   Created: 2024/03/12 19:51:08 by seojilee          #+#    #+#             */
+/*   Updated: 2024/03/13 14:43:18 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSE_H
-# define PARSE_H
+#ifndef STRUCT_H
+# define STRUCT_H
 
-# include "parse_internal.h"
+typedef struct s_map	t_map;
 
-void	if_error_exit(int exp);
+struct s_map
+{
+	char	*north;
+	char	*south;
+	char	*west;
+	char	*east;
+
+	int		floor;
+	int		ceiling;
+
+	int		**map;
+	int		width;
+	int		height;
+};
 
 #endif
