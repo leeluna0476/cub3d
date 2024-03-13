@@ -4,6 +4,12 @@ CC=cc
 CFLAGS=-Wall -Wextra -Werror
 CLIB=-lmlx -framework OpenGL -framework Appkit
 SRCS=\
+	draw_line.c \
+	draw_utils1.c \
+	draw_utils2.c \
+	key_press_handler.c \
+	exec_cub.c \
+	draw_2D.c \
 	main.c
 OBJS=$(SRCS:%.c=%.o)
 NAME=cub3D
