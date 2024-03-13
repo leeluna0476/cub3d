@@ -6,7 +6,7 @@
 /*   By: seojilee <seojilee@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 19:51:08 by seojilee          #+#    #+#             */
-/*   Updated: 2024/03/12 20:00:33 by seojilee         ###   ########.fr       */
+/*   Updated: 2024/03/13 14:43:18 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ struct s_map
 	int		ceiling;
 
 	int		**map;
+	int		width;
+	int		height;
 };
 
 #endif

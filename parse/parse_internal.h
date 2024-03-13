@@ -6,7 +6,7 @@
 /*   By: seojilee <seojilee@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 19:50:59 by seojilee          #+#    #+#             */
-/*   Updated: 2024/03/12 20:37:54 by seojilee         ###   ########.fr       */
+/*   Updated: 2024/03/13 13:33:46 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ void	insert_value_flag(char **ptr, char *value, int *flag);
 void	insert_color_flag(int *ptr, int color[3], int *flag);
 void	insert_texture(t_map *env, char *line, int flag[6]);
 void	insert_color(t_map *env, char *line, int flag[6]);
-t_map	parse_texture(int map_fd);
+void	parse_texture(t_map *env, int map_fd);
 
 #endif
