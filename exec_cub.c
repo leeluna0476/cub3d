@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:41:21 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/13 13:14:47 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/13 15:32:51 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "structs.h"
+#include "parse/parse.h"
 
 void	pixel_put(t_dot *dot, int color, t_info *info);
 t_dot	*get_dot(int x, int y);
@@ -24,6 +25,8 @@ int	draw_line(t_line *line, t_info *info);
 t_line	*get_line(t_dot *d1, t_dot *d2);
 int	key_press_handler(int key, t_info *info);
 void	draw_2D(t_info *info);
+t_map	*parser(int map_fd);
+
 
 void	make_image_put_window(t_info *info, void (*draw_map)(t_info *info))
 {
@@ -39,9 +42,10 @@ void	make_image_put_window(t_info *info, void (*draw_map)(t_info *info))
 		info->win, image->img_ptr, 0, 0);
 }
 
-t_info	*get_info_start(void)
+t_info	*get_info_start(char **av)
 {
 	t_info	*info;
+	int		map_fd;
 
 	info = (t_info *)malloc(sizeof(t_info));
 	info->mlx = mlx_init();
@@ -49,17 +53,22 @@ t_info	*get_info_start(void)
 	info->posY = 2;
 	info->dirX = -1;
 	info->dirY = 0;
+	info->planeX = 0;
+	info->planeY = 0;
 	info->moveSpeed = 0.1;
 	info->rotSpeed = 0.1;
+	map_fd = open(av[1], O_RDONLY);
+	if_error_exit(map_fd == -1);
+	info->map = parser(map_fd);
 	info->win = mlx_new_window(info->mlx, WIN_WID, WIN_HEI, "cub2D");
 	return (info);
 }
 
-int	exec_cub(void)
+int	exec_cub(char **av)
 {
 	t_info	*info;
 
-	info = get_info_start();
+	info = get_info_start(av);
 	make_image_put_window(info, draw_2D);
 	mlx_hook(info->win, X_EVENT_KEY_PRESS, 0, key_press_handler, info);
 	mlx_loop(info->mlx);
