@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:41:21 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/13 15:28:46 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/13 16:56:18 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,13 @@ void	draw_box(t_dot *dot_start, t_dot *dot_end, int color, t_info *info)
 	free(dot_end);
 }
 
-void	draw_2D_user(t_info *info, int gap_x, int gap_y)
+void	draw_2D_user(t_info *info, double gap_x, double gap_y)
 {
 	int	mid_x;
 	int	mid_y;
 
-	mid_x = (info->posX + 1) * gap_x / 2;
-	mid_y = (info->posY + 1) * gap_y / 2;
+	mid_x = info->posX * gap_x - gap_x / 2;
+	mid_y = info->posY * gap_y - gap_y / 2;
 	draw_box(get_dot(mid_x - 4, mid_y -4), get_dot(mid_x + 4, mid_y + 4), COLOR_BLUE, info);
 	draw_line(get_line(get_dot(mid_x, mid_y), get_dot(mid_x + info->dirX * 30, mid_y + info->dirY * 30)), info);
 }
@@ -181,22 +181,24 @@ void	draw_2D(t_info *info)
 	double	gap_y;
 	int		x;
 	int		y;
+	int		color;
 
-	gap_x = WIN_WID / info->map->width;
-	gap_y = WIN_HEI / info->map->height;
+	gap_x = (double)WIN_WID / info->map->width;
+	gap_y = (double)WIN_HEI / info->map->height;
 	y = 0;
 	while (y < info->map->height)
 	{
 		x = 0;
 		while (x < info->map->width)
 		{
-			printf("x : %d y : %d, now : %d\n", x, y, info->map->map[y][x]);
-			if ((info->map->map)[y][x] != 0)
-				draw_box(get_dot(x * gap_x, y * gap_y),
-					get_dot((x + 1) * gap_x, (y + 1) * gap_y), COLOR_WHITE, info);
+			if ((info->map->map)[y][x] == 0 || (info->map->map)[y][x] == 'N')
+				color = COLOR_BLACK;
+			else if ((info->map->map)[y][x] == 1)
+				color = COLOR_WHITE;
 			else
-				draw_box(get_dot(x * gap_x, y * gap_y),
-					get_dot((x + 1) * gap_x, (y + 1) * gap_y), COLOR_BLACK, info);
+				color = COLOR_GRAY;
+			draw_box(get_dot(x * gap_x, y * gap_y),
+				get_dot((x + 1) * gap_x, (y + 1) * gap_y), color, info);
 			x++;
 		}
 		y++;
