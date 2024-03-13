@@ -6,11 +6,11 @@
 /*   By: seojilee <seojilee@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 19:51:03 by seojilee          #+#    #+#             */
-/*   Updated: 2024/03/13 13:32:02 by seojilee         ###   ########.fr       */
+/*   Updated: 2024/03/13 14:51:49 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse_internal.h"
+#include "parse.h"
 
 void	insert_value_flag(char **ptr, char *value, int *flag)
 {

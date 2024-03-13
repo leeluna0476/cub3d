@@ -1,4 +1,4 @@
-#include "parse_internal.h"
+#include "parse.h"
 
 char	**merge_string(char **str, char *add)
 {
@@ -114,7 +114,7 @@ int	main(int ac, char **av)
 	// if no arg or too many args
 	if_error_exit(ac != 2);
 
-//	atexit(leaks);
+	atexit(leaks);
 	map_fd = open(av[1], O_RDONLY);
 	// if no such map
 	if_error_exit(map_fd == -1);
