@@ -6,7 +6,7 @@
 /*   By: seojilee <seojilee@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 14:54:20 by seojilee          #+#    #+#             */
-/*   Updated: 2024/03/13 15:36:11 by seojilee         ###   ########.fr       */
+/*   Updated: 2024/03/13 17:43:38 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ char	**get_map_char(t_map *env, int map_fd)
 	while (line)
 	{
 		line_len = ft_strlen(line) - 1;
-		line[line_len] = '\0';
+		if (line[line_len] == '\n')
+			line[line_len] = '\0';
 		if (line_len > env->width)
 			env->width = line_len;
 		map = merge_string(map, line);

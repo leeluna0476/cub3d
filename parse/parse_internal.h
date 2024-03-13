@@ -6,7 +6,7 @@
 /*   By: seojilee <seojilee@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 19:50:59 by seojilee          #+#    #+#             */
-/*   Updated: 2024/03/13 15:17:06 by seojilee         ###   ########.fr       */
+/*   Updated: 2024/03/13 15:42:20 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	parse_texture(t_map *env, int map_fd);
 char	**merge_string(char **str, char *add);
 char	**get_map_char(t_map *env, int map_fd);
 int		**get_map_int(char **cmap, int height, int width);
+int		is_effective_char(int c);
 int		is_user(int c);
 void	check_map_effect(t_map *env);
 
