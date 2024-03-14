@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:41:21 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/13 16:54:01 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/14 11:08:09 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,8 @@ void	find_start_point(t_info *info)
 			// printf("board %d-%d = %d\n", x, y, info->map->map[y][x]);
 			if (info->map->map[y][x] == 'N')
 			{
-				info->posX = x + 1;
-				info->posY = y + 1;
-				printf("start %d-%d\n", x + 1, y + 1);
+				info->posX = x;
+				info->posY = y;
 				return ;
 			}
 			x++;

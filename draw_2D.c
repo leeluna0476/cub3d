@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:41:21 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/13 16:56:18 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/14 11:08:32 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ void	draw_2D_user(t_info *info, double gap_x, double gap_y)
 	int	mid_x;
 	int	mid_y;
 
-	mid_x = info->posX * gap_x - gap_x / 2;
-	mid_y = info->posY * gap_y - gap_y / 2;
+	mid_x = info->posX * gap_x + gap_x / 2;
+	mid_y = info->posY * gap_y + gap_y / 2;
 	draw_box(get_dot(mid_x - 4, mid_y -4), get_dot(mid_x + 4, mid_y + 4), COLOR_BLUE, info);
 	draw_line(get_line(get_dot(mid_x, mid_y), get_dot(mid_x + info->dirX * 30, mid_y + info->dirY * 30)), info);
 }

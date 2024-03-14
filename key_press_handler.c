@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:41:21 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/13 17:00:07 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/14 11:26:32 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,33 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "structs.h"
+#include <math.h>
 
 void	draw_2D(t_info *info);
 void	make_image_put_window(t_info *info, void (*draw_map)(t_info *info));
 
 int	go_front_back(int key, t_info *info)
 {
+	int	move_x;
+	int	move_y;
+
 	if (key == K_W)
 	{
-		info->posX += info->dirX * info->moveSpeed;
-		info->posY += info->dirY * info->moveSpeed;
+		move_x = round(info->posX + info->dirX * info->moveSpeed);
+		move_y = round(info->posY + info->dirY * info->moveSpeed);
+		if (info->map->map[(int)round(info->posY)][move_x] != 1)
+			info->posX += info->dirX * info->moveSpeed;
+		if (info->map->map[move_y][(int)round(info->posX)] != 1)
+			info->posY += info->dirY * info->moveSpeed;
 	}
 	if (key == K_S)
 	{
-		info->posX -= info->dirX * info->moveSpeed;
-		info->posY -= info->dirY * info->moveSpeed;
+		move_x = round(info->posX - info->dirX * info->moveSpeed);
+		move_y = round(info->posY - info->dirY * info->moveSpeed);
+		if (info->map->map[(int)round(info->posY)][move_x] != 1)
+			info->posX -= info->dirX * info->moveSpeed;
+		if (info->map->map[move_y][(int)round(info->posX)] != 1)
+			info->posY -= info->dirY * info->moveSpeed;
 	}
 	return (0);
 }
