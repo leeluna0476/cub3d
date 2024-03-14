@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 09:15:28 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/13 15:20:07 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/14 14:41:41 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,14 @@
 
 # define X_EVENT_KEY_PRESS	2
 # define X_EVENT_KEY_EXIT	17
-// # define MAP_WID 7
-// # define MAP_HEI 7
 # define WIN_WID 640
-# define WIN_HEI 480
+# define WIN_HEI 640
+# define COLOR_BLACK 0x000000
 # define COLOR_WHITE 0xFFFFFF
 # define COLOR_GRAY 0xA9A9A9
 # define COLOR_BLUE 0x0000FF
+# define COLOR_GREEN 0x00FF00
 # define COLOR_RED 0xFF0000
-# define COLOR_BLACK 0x000000
 
 # include "parse/parse.h"
 

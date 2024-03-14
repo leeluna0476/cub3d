@@ -15,6 +15,7 @@ SRCS=\
 	draw_utils2.c \
 	key_press_handler.c \
 	exec_cub.c \
+	raycast.c \
 	draw_2D.c \
 	main.c
 OBJS=$(SRCS:%.c=%.o)

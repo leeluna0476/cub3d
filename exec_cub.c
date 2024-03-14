@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:41:21 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/14 11:08:09 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/14 15:48:16 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@
 
 void	pixel_put(t_dot *dot, int color, t_info *info);
 t_dot	*get_dot(int x, int y);
-int	draw_line(t_line *line, t_info *info);
+int		draw_line(t_line *line, t_info *info, int color);
 t_line	*get_line(t_dot *d1, t_dot *d2);
 int	key_press_handler(int key, t_info *info);
 void	draw_2D(t_info *info);
+void	raycast(t_info *info);
 t_map	*parser(int map_fd);
-
 
 void	make_image_put_window(t_info *info, void (*draw_map)(t_info *info))
 {
@@ -56,8 +56,8 @@ void	find_start_point(t_info *info)
 			// printf("board %d-%d = %d\n", x, y, info->map->map[y][x]);
 			if (info->map->map[y][x] == 'N')
 			{
-				info->posX = x;
-				info->posY = y;
+				info->posX = x + 0.5;
+				info->posY = y + 0.5;
 				return ;
 			}
 			x++;
@@ -80,7 +80,7 @@ t_info	*get_info_start(char **av)
 	info->dirX = -1;
 	info->dirY = 0;
 	info->planeX = 0;
-	info->planeY = 0;
+	info->planeY = 0.66;
 	info->moveSpeed = 0.1;
 	info->rotSpeed = 0.1;
 	info->win = mlx_new_window(info->mlx, WIN_WID, WIN_HEI, "cub2D");

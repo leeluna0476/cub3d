@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:41:21 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/14 11:26:32 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/14 15:53:09 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <math.h>
 
 void	draw_2D(t_info *info);
+void	raycast(t_info *info);
 void	make_image_put_window(t_info *info, void (*draw_map)(t_info *info));
 
 int	go_front_back(int key, t_info *info)
@@ -29,20 +30,20 @@ int	go_front_back(int key, t_info *info)
 
 	if (key == K_W)
 	{
-		move_x = round(info->posX + info->dirX * info->moveSpeed);
-		move_y = round(info->posY + info->dirY * info->moveSpeed);
-		if (info->map->map[(int)round(info->posY)][move_x] != 1)
+		move_x = info->posX + info->dirX * info->moveSpeed;
+		move_y = info->posY + info->dirY * info->moveSpeed;
+		if (info->map->map[(int)(info->posY)][move_x] != 1)
 			info->posX += info->dirX * info->moveSpeed;
-		if (info->map->map[move_y][(int)round(info->posX)] != 1)
+		if (info->map->map[move_y][(int)(info->posX)] != 1)
 			info->posY += info->dirY * info->moveSpeed;
 	}
 	if (key == K_S)
 	{
-		move_x = round(info->posX - info->dirX * info->moveSpeed);
-		move_y = round(info->posY - info->dirY * info->moveSpeed);
-		if (info->map->map[(int)round(info->posY)][move_x] != 1)
+		move_x = info->posX - info->dirX * info->moveSpeed;
+		move_y = info->posY - info->dirY * info->moveSpeed;
+		if (info->map->map[(int)(info->posY)][move_x] != 1)
 			info->posX -= info->dirX * info->moveSpeed;
-		if (info->map->map[move_y][(int)round(info->posX)] != 1)
+		if (info->map->map[move_y][(int)(info->posX)] != 1)
 			info->posY -= info->dirY * info->moveSpeed;
 	}
 	return (0);
@@ -50,19 +51,26 @@ int	go_front_back(int key, t_info *info)
 
 int	change_dir(int key, t_info *info)
 {
-	double	oldDirX;
+	double	old_dir_x;
+	double	old_plane_x;
 
 	if (key == K_A)
 	{
-		oldDirX = info->dirX;
+		old_dir_x = info->dirX;
 		info->dirX = info->dirX * cos(-info->rotSpeed) - info->dirY * sin(-info->rotSpeed);
-		info->dirY = oldDirX * sin(-info->rotSpeed) + info->dirY * cos(-info->rotSpeed);
+		info->dirY = old_dir_x * sin(-info->rotSpeed) + info->dirY * cos(-info->rotSpeed);
+		old_plane_x = info->planeX;
+		info->planeX = info->planeX * cos(-info->rotSpeed) - info->planeY * sin(-info->rotSpeed);
+		info->planeY = old_plane_x * sin(-info->rotSpeed) + info->planeY * cos(-info->rotSpeed);
 	}
 	if (key == K_D)
 	{
-		oldDirX = info->dirX;
+		old_dir_x = info->dirX;
 		info->dirX = info->dirX * cos(info->rotSpeed) - info->dirY * sin(info->rotSpeed);
-		info->dirY = oldDirX * sin(info->rotSpeed) + info->dirY * cos(info->rotSpeed);
+		info->dirY = old_dir_x * sin(info->rotSpeed) + info->dirY * cos(info->rotSpeed);
+		old_plane_x = info->planeX;
+		info->planeX = info->planeX * cos(info->rotSpeed) - info->planeY * sin(info->rotSpeed);
+		info->planeY = old_plane_x * sin(info->rotSpeed) + info->planeY * cos(info->rotSpeed);
 	}
 	return (0);
 }
