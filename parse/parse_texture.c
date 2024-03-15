@@ -6,7 +6,7 @@
 /*   By: seojilee <seojilee@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 19:51:03 by seojilee          #+#    #+#             */
-/*   Updated: 2024/03/13 14:51:49 by seojilee         ###   ########.fr       */
+/*   Updated: 2024/03/15 14:49:01 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,17 @@ void	insert_texture(t_map *env, char *line, int flag[6])
 {
 	char	type;
 	char	*value;
+	char	**split;
 
-	type = line[0];
-	if_error_exit((type == 'N' && flag[0]) || (type == 'S' && flag[1]) \
+	split = ft_split(line, ' ');
+	if_error_exit(!split);
+	type = split[0][0];
+	if_error_exit(split[2] \
+		|| (type == 'N' && flag[0]) || (type == 'S' && flag[1]) \
 		|| (type == 'W' && flag[2]) || (type == 'E' && flag[3]));
-	value = ft_strdup(line + 3);
-	if (value)
-		value[ft_strlen(value) - 1] = '\0';
+	value = ft_strdup(split[1]);
+	if_error_exit(!value);
+	value[ft_strlen(value) - 1] = '\0';
 	if (type == 'N')
 		insert_value_flag(&(env->north), value, &(flag[0]));
 	else if (type == 'S')
@@ -43,6 +47,7 @@ void	insert_texture(t_map *env, char *line, int flag[6])
 		insert_value_flag(&(env->west), value, &(flag[2]));
 	else
 		insert_value_flag(&(env->east), value, &(flag[3]));
+	free_cpptr(split);
 }
 
 void	insert_color(t_map *env, char *line, int flag[6])
@@ -71,7 +76,7 @@ void	insert_color(t_map *env, char *line, int flag[6])
 		else if (type == 'C')
 			insert_color_flag(&(env->ceiling), color, &(flag[5]));
 	}
-	free_char_pp(rgb);
+	free_cpptr(rgb);
 }
 
 // no, so, we, ea, f, c
@@ -83,17 +88,20 @@ void	parse_texture(t_map *env, int map_fd)
 
 	ft_memset(texture_flag, 0, sizeof(int) * 6);
 	line = get_next_line(map_fd);
-	flag = (is_direction(line) || is_color(line));
-	while (line && flag)
+	flag = (line && \
+			(is_direction(line) || is_color(line) || is_empty(line)));
+	while (flag)
 	{
 		if (is_direction(line))
 			insert_texture(env, line, texture_flag);
 		else if (is_color(line))
 			insert_color(env, line, texture_flag);
 		free(line);
+		if (is_raised(texture_flag))
+			break ;
 		line = get_next_line(map_fd);
-		flag = (is_direction(line) || is_color(line));
+		flag = (line && \
+				(is_direction(line) || is_color(line) || is_empty(line)));
 	}
-	free(line);
 	if_error_exit(!is_raised(texture_flag));
 }
