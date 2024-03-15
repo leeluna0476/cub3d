@@ -6,18 +6,31 @@
 /*   By: seojilee <seojilee@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 19:51:10 by seojilee          #+#    #+#             */
-/*   Updated: 2024/03/12 19:51:13 by seojilee         ###   ########.fr       */
+/*   Updated: 2024/03/14 15:47:34 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse_internal.h"
 
-void	free_char_pp(char **ptr)
+void	free_cpptr(char **ptr)
 {
-	int	i;
+	int		i;
 
 	i = 0;
 	while (ptr[i])
+	{
+		free(ptr[i]);
+		i++;
+	}
+	free(ptr);
+}
+
+void	free_ipptr(int **ptr, int size)
+{
+	int		i;
+
+	i = 0;
+	while (i < size)
 	{
 		free(ptr[i]);
 		i++;

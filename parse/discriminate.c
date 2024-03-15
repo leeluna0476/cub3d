@@ -6,23 +6,37 @@
 /*   By: seojilee <seojilee@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 19:50:49 by seojilee          #+#    #+#             */
-/*   Updated: 2024/03/13 15:41:49 by seojilee         ###   ########.fr       */
+/*   Updated: 2024/03/15 13:53:45 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse_internal.h"
+#include "parse.h"
 
 int	is_direction(char *line)
 {
-	return (ft_strnstr(line, "NO ", 3) \
-			|| ft_strnstr(line, "SO ", 3) \
-			|| ft_strnstr(line, "WE ", 3) \
-			|| ft_strnstr(line, "EA ", 3));
+	char	**split;
+	int		ret;
+
+	split = ft_split(line, ' ');
+	if_error_exit(!split);
+	ret = (!ft_strncmp(split[0], "NO", ft_strlen(split[0])) \
+			|| !ft_strncmp(split[0], "SO", ft_strlen(split[0])) \
+			|| !ft_strncmp(split[0], "WE", ft_strlen(split[0])) \
+			|| !ft_strncmp(split[0], "EA", ft_strlen(split[0])));
+	free_cpptr(split);
+	return (ret);
 }
 
 int	is_color(char *line)
 {
-	return (ft_strnstr(line, "F ", 2) || ft_strnstr(line, "C ", 2));
+	char	**split;
+	int		ret;
+
+	split = ft_split(line, ' ');
+	ret = (!ft_strncmp(split[0], "F", ft_strlen(split[0])) \
+				|| !ft_strncmp(split[0], "C", ft_strlen(split[0])));
+	free_cpptr(split);
+	return (ret);
 }
 
 int	is_raised(int flag[6])
@@ -39,17 +53,23 @@ int	is_raised(int flag[6])
 	return (1);
 }
 
-int	is_effective_char(int c)
-{
-	if (c == 1 || c == 0 || c == ' ' \
-			|| c == 'N' || c == 'S' || c == 'W' || c == 'E')
-		return (c);
-	return (-1);
-}
-
 int	is_user(int c)
 {
 	if (c == 'N' || c == 'S' || c == 'W' || c == 'E')
 		return (c);
 	return (0);
+}
+
+int	is_empty(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] != ' ' && line[i] != '\n')
+			return (0);
+		i++;
+	}
+	return (1);
 }

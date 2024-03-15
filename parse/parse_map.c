@@ -6,7 +6,7 @@
 /*   By: seojilee <seojilee@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 14:54:22 by seojilee          #+#    #+#             */
-/*   Updated: 2024/03/13 15:39:20 by seojilee         ###   ########.fr       */
+/*   Updated: 2024/03/14 17:36:15 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	parse_map(t_map *env, int map_fd)
 	cmap = get_map_char(env, map_fd);
 	if_error_exit(!cmap);
 	env->map = get_map_int(cmap, env->height, env->width);
-	free_char_pp(cmap);
+	free_cpptr(cmap);
+	check_map_validity(env);
 }
 
 t_map	*parser(int map_fd)
@@ -30,9 +31,9 @@ t_map	*parser(int map_fd)
 	if_error_exit(!env);
 	env->floor = -1;
 	env->ceiling = -1;
+	env->user[0] = -1;
 	parse_texture(env, map_fd);
 	parse_map(env, map_fd);
-	check_map_effect(env);
 	return (env);
 }
 

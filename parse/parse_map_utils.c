@@ -6,7 +6,7 @@
 /*   By: seojilee <seojilee@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 14:54:20 by seojilee          #+#    #+#             */
-/*   Updated: 2024/03/13 17:43:38 by seojilee         ###   ########.fr       */
+/*   Updated: 2024/03/15 13:51:16 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,3 @@ int	**get_map_int(char **cmap, int height, int width)
 	}
 	return (map);
 }
-
