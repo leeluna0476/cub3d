@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:39:40 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/15 19:36:39 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/15 20:02:09 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,10 @@ void	get_ray_dist_and_line_hei(t_cal *cal, t_info *info)
 		cal->ray_dist = (cal->map_x - info->posX + (1 - cal->step_x) / 2) / cal->ray_dir_x;
 	else
 		cal->ray_dist = (cal->map_y - info->posY + (1 - cal->step_y) / 2) / cal->ray_dir_y;
-	cal->line_hei = (int)(WIN_HEI / cal->ray_dist);
+	if (cal->ray_dist == 0)
+		cal->line_hei = WIN_HEI;
+	else
+		cal->line_hei = (int)(WIN_HEI / cal->ray_dist);
 }
 
 void	exec_dda(t_cal *cal, t_info *info)
@@ -131,7 +134,6 @@ int	get_wall_num(t_cal *cal)
 			return (3);
 	}
 }
-
 
 int	get_tex_x(t_cal *cal, t_info *info)
 {
@@ -224,6 +226,7 @@ void	draw_3D(t_info	*info)
 		cal = init_cal(cal, x, info);
 		exec_dda(cal, info);
 		draw_raycast(cal, info);
+		free(cal);
 		x++;
 	}
 }
