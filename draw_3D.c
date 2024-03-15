@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:39:40 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/15 17:00:39 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/15 19:36:39 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,7 @@ void	get_ray_dist_and_line_hei(t_cal *cal, t_info *info)
 		cal->ray_dist = (cal->map_x - info->posX + (1 - cal->step_x) / 2) / cal->ray_dir_x;
 	else
 		cal->ray_dist = (cal->map_y - info->posY + (1 - cal->step_y) / 2) / cal->ray_dir_y;
-	if (fabs(cal->ray_dist) < 1e-9)
-		cal->line_hei = WIN_HEI;
-	else
-		cal->line_hei = (int)(WIN_HEI / cal->ray_dist);
+	cal->line_hei = (int)(WIN_HEI / cal->ray_dist);
 }
 
 void	exec_dda(t_cal *cal, t_info *info)
@@ -112,6 +109,7 @@ void	exec_dda(t_cal *cal, t_info *info)
 		}
 		if (info->map->map[cal->map_y][cal->map_x] == 1)
 			hit = 1;
+			// printf("pos : %f-%f, map : %d-%d, now : %d\n",info->posX, info->posY,  cal->map_x, cal->map_y, info->map->map[cal->map_y][cal->map_x]);
 	}
 	get_ray_dist_and_line_hei(cal, info);
 }
