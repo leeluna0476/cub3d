@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   draw_line.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/10 13:23:49 by yegkim            #+#    #+#             */
-/*   Updated: 2023/12/06 15:54:23 by yegkim           ###   ########.fr       */
+/*   Created: 2023/12/11 16:04:29 by yegkim            #+#    #+#             */
+/*   Updated: 2024/03/13 11:54:34 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-long long	ft_atol(const char *str)
-{
-	long long	minus;
-	long long	answer;
+#ifndef DRAW_LINE_H
+# define DRAW_LINE_H
 
-	minus = 1;
-	answer = 0;
-	while (*str == ' ' || (*str >= 9 && *str <= 13))
-		str++;
-	if (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-			minus *= -1;
-		str++;
-	}
-	while (*str >= '0' && *str <= '9')
-	{
-		answer *= 10;
-		answer += (*str - '0');
-		str++;
-	}
-	return (answer * minus);
-}
+# include <mlx.h>
+# include <stdlib.h>
+# include "structs.h"
+
+void	align_dot_start(int flag_y, t_line *line);
+t_dot	*get_dot(int x, int y);
+void	pixel_put(t_dot *dot, int color, t_info *info);
+
+#endif
