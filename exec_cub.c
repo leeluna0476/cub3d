@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:41:21 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/14 15:48:16 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/15 11:48:39 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		draw_line(t_line *line, t_info *info, int color);
 t_line	*get_line(t_dot *d1, t_dot *d2);
 int	key_press_handler(int key, t_info *info);
 void	draw_2D(t_info *info);
-void	raycast(t_info *info);
+void	draw_3D(t_info	*info);
 t_map	*parser(int map_fd);
 
 void	make_image_put_window(t_info *info, void (*draw_map)(t_info *info))
@@ -53,7 +53,6 @@ void	find_start_point(t_info *info)
 		x = 0;
 		while (x < info->map->width)
 		{
-			// printf("board %d-%d = %d\n", x, y, info->map->map[y][x]);
 			if (info->map->map[y][x] == 'N')
 			{
 				info->posX = x + 0.5;
@@ -80,10 +79,10 @@ t_info	*get_info_start(char **av)
 	info->dirX = -1;
 	info->dirY = 0;
 	info->planeX = 0;
-	info->planeY = 0.66;
+	info->planeY = -0.66;
 	info->moveSpeed = 0.1;
 	info->rotSpeed = 0.1;
-	info->win = mlx_new_window(info->mlx, WIN_WID, WIN_HEI, "cub2D");
+	info->win = mlx_new_window(info->mlx, WIN_WID, WIN_HEI, "cub3D");
 	return (info);
 }
 
@@ -92,7 +91,7 @@ int	exec_cub(char **av)
 	t_info	*info;
 
 	info = get_info_start(av);
-	make_image_put_window(info, draw_2D);
+	make_image_put_window(info, draw_3D);
 	mlx_hook(info->win, X_EVENT_KEY_PRESS, 0, key_press_handler, info);
 	mlx_loop(info->mlx);
 	return (0);

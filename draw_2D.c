@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:41:21 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/14 15:50:20 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/14 16:48:16 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,7 @@ t_dot	*get_dot(int x, int y);
 int	draw_line(t_line *line, t_info *info, int color);
 t_line	*get_line(t_dot *d1, t_dot *d2);
 int	key_press_handler(int key, t_info *info);
-int	raycast(t_info	*info);
-
-// int	worldMap[7][7] = {
-// 							{1,1,1,1,1,1,1},
-// 							{1,0,0,0,1,0,1},
-// 							{1,0,1,0,1,0,1},
-// 							{1,0,0,0,0,0,1},
-// 							{1,0,0,0,0,1,1},
-// 							{1,0,0,0,0,0,1},
-// 							{1,1,1,1,1,1,1},
-// 						};
+void	draw_2D_ray(t_info	*info);
 
 void	draw_box(t_dot *dot_start, t_dot *dot_end, int color, t_info *info)
 {
@@ -98,5 +88,5 @@ void	draw_2D(t_info *info)
 		y++;
 	}
 	draw_2D_user(info, gap_x, gap_y);
-	raycast(info);
+	draw_2D_ray(info);
 }
