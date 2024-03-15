@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 17:02:21 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/12 20:05:15 by seojilee         ###   ########.fr       */
+/*   Updated: 2024/03/15 14:22:17 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int			ft_strncmp(const char *s1, const char *s2, size_t n);
 void		*ft_memchr(const void *s, int c, size_t n);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
 char		*ft_strnstr(const char *str, const char *to_find, size_t len);
+int			is_space(char c);
 long		ft_atol(const char *str);
 int			ft_atoi(const char *str);
 void		*ft_calloc(size_t count, size_t size);

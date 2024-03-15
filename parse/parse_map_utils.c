@@ -6,7 +6,7 @@
 /*   By: seojilee <seojilee@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 14:54:20 by seojilee          #+#    #+#             */
-/*   Updated: 2024/03/15 13:51:16 by seojilee         ###   ########.fr       */
+/*   Updated: 2024/03/15 14:47:59 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,17 @@ char	**get_map_char(t_map *env, int map_fd)
 	char	*line;
 	char	**map;
 	int		line_len;
-	int		i;
 
 	line = get_next_line(map_fd);
+	while (line && is_empty(line))
+	{
+		free(line);
+		line = get_next_line(map_fd);
+	}
 	map = NULL;
-	i = 0;
 	while (line)
 	{
+		if_error_exit(is_empty(line));
 		line_len = ft_strlen(line) - 1;
 		if (line[line_len] == '\n')
 			line[line_len] = '\0';
@@ -60,9 +64,18 @@ char	**get_map_char(t_map *env, int map_fd)
 	return (map);
 }
 
+void	fill_space(int *map, int i, int width)
+{
+	while (i < width)
+	{
+		map[i] = ' ';
+		i++;
+	}
+}
+
 int	**get_map_int(char **cmap, int height, int width)
 {
-	int	**map;
+	int		**map;
 	int		i;
 	int		j;
 
@@ -81,11 +94,7 @@ int	**get_map_int(char **cmap, int height, int width)
 				map[j][i] -= '0';
 			i++;
 		}
-		while (i < width)
-		{
-			map[j][i] = ' ';
-			i++;
-		}
+		fill_space(map[j], i, width);
 		j++;
 	}
 	return (map);
