@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:41:21 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/15 14:45:22 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/15 17:26:12 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int	exec_cub(char **av)
 	t_info	*info;
 
 	info = get_info_start(av);
-	make_image_put_window(info, draw_3D);
+	make_image_put_window(info, draw_2D);
 	mlx_hook(info->win, X_EVENT_KEY_PRESS, 0, key_press_handler, info);
 	mlx_loop(info->mlx);
 	return (0);

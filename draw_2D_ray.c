@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:39:40 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/15 11:19:30 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/15 17:08:34 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	draw_2D_ray(t_info	*info)
 	int	x;
 
 	x = 0;
-	while (x < WIN_WID / 2)
+	while (x < WIN_WID)
 	{
 		double cameraX = (2 * (double)x / (double)(WIN_WID)) - 1;
 		double rayDirX = info->dirX + info->planeX * cameraX;
@@ -104,7 +104,6 @@ void	draw_2D_ray(t_info	*info)
 			perpWallDist = (mapX - info->posX + (1 - stepX) / 2) / rayDirX;
 		else
 			perpWallDist = (mapY - info->posY + (1 - stepY) / 2) / rayDirY;
-		printf("%d, %f\n",x, perpWallDist);
 		draw_ray(rayDirX, rayDirY, info, perpWallDist);
 		x++;
 	}
