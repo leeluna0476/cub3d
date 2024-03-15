@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 14:54:22 by seojilee          #+#    #+#             */
-/*   Updated: 2024/03/13 15:47:10 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/15 17:53:44 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	parse_map(t_map *env, int map_fd)
 	cmap = get_map_char(env, map_fd);
 	if_error_exit(!cmap);
 	env->map = get_map_int(cmap, env->height, env->width);
-	free_char_pp(cmap);
+	free_cpptr(cmap);
+	check_map_validity(env);
 }
 
 t_map	*parser(int map_fd)
@@ -30,15 +31,15 @@ t_map	*parser(int map_fd)
 	if_error_exit(!env);
 	env->floor = -1;
 	env->ceiling = -1;
+	env->user[0] = -1;
 	parse_texture(env, map_fd);
 	parse_map(env, map_fd);
-	check_map_effect(env);
 	return (env);
 }
 
 void	leaks(void)
 {
-	system("leaks a.out");
+	system("leaks -q a.out");
 }
 
 // int	main(int ac, char **av)
