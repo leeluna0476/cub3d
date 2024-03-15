@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:39:40 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/15 11:40:22 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/15 14:45:01 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,6 @@ t_dot	*get_dot(int x, int y);
 int		draw_line(t_line *line, t_info *info, int color);
 t_line	*get_line(t_dot *d1, t_dot *d2);
 void	pixel_put(t_dot *dot, int color, t_info *info);
-
-int	get_texture_color(int side)
-{
-	int	color;
-
-	if (side == 0)
-		color = COLOR_BLUE;
-	else
-		color = COLOR_GREEN;
-	return (color);
-}
 
 void	draw_3D(t_info	*info)
 {
@@ -112,11 +101,45 @@ void	draw_3D(t_info	*info)
 		if(drawStart < 0) drawStart = 0;
 		int drawEnd = lineHeight / 2 + WIN_HEI / 2;
 		if(drawEnd >= WIN_HEI) drawEnd = WIN_HEI - 1;
-		t_dot *dot1 = get_dot(x, drawStart);
-		t_dot *dot2 = get_dot(x, drawEnd);
-		draw_line(get_line(dot1, dot2), info, get_texture_color(side));
-		free(dot1);
-		free(dot2);
+
+      //calculate value of wallX
+      double wallX; //where exactly the wall was hit
+      if (side == 0) wallX = info->posY + perpWallDist * rayDirY;
+      else           wallX = info->posX + perpWallDist * rayDirX;
+      wallX -= floor((wallX));
+
+      //x coordinate on the texture
+      int texX = (int)(wallX * (double)(TEX_WID));
+      if(side == 0 && rayDirX > 0) texX = TEX_WID - texX - 1;
+      if(side == 1 && rayDirY < 0) texX = TEX_WID - texX - 1;
+
+		// How much to increase the texture coordinate per screen pixel
+      double step = 1.0 * TEX_HEI / lineHeight;
+      // Starting texture coordinate
+      double texPos = (drawStart - WIN_HEI / 2 + lineHeight / 2) * step;
+      for(int y = drawStart; y<drawEnd; y++)
+      {
+        // Cast the texture coordinate to integer, and mask with (texHeight - 1) in case of overflow
+        int texY = (int)texPos & (TEX_HEI - 1);
+        texPos += step;
+		int	wall_dir;
+		if (side == 0)
+		{
+			if (rayDirX < 0)
+				wall_dir = 0;
+			else
+				wall_dir = 1;
+		}
+		else
+		{
+			if (rayDirY < 0)
+				wall_dir = 2;
+			else
+				wall_dir = 3;
+		}
+        int color = info->texture[wall_dir][TEX_HEI * texY + texX];
+        pixel_put(get_dot(x, y), color, info);
+      }
 		x++;
 	}
 }

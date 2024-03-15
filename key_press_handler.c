@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:41:21 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/15 11:53:03 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/15 12:41:41 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ if (key == K_D)
     if (info->map->map[(int)(move_y - 0.1)][(int)(info->posX)] != 1)
         info->posY += info->dirX * info->moveSpeed;
 }
-
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 09:15:28 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/14 14:41:41 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/15 14:43:24 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # define X_EVENT_KEY_EXIT	17
 # define WIN_WID 640
 # define WIN_HEI 640
+# define TEX_WID 200
+# define TEX_HEI 200
 # define COLOR_BLACK 0x000000
 # define COLOR_WHITE 0xFFFFFF
 # define COLOR_GRAY 0xA9A9A9
@@ -33,6 +35,8 @@ typedef struct s_image
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	int		wid;
+	int		hei;
 }			t_image;
 
 typedef struct s_line
@@ -60,8 +64,8 @@ typedef struct s_info
 	void	*mlx;
 	void	*win;
 	t_map	*map;
-	// int		**map; // 임시 맵데이터, 이후에 구조체 포인터로 변경할 것.
 	t_image	*img;
+	int		texture[4][TEX_HEI * TEX_WID];
 	double	moveSpeed;
 	double	rotSpeed;
 }				t_info;

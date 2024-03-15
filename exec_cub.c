@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:41:21 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/15 11:48:39 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/15 14:45:22 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,23 @@ void	find_start_point(t_info *info)
 	}
 }
 
+void	get_texture(t_info *info)
+{
+	for (int x = 0; x < TEX_WID; x++)
+	{
+		for (int y = 0; y < TEX_HEI; y++)
+		{
+			int xorcolor = (x * 256 / TEX_WID) ^ (y * 256 / TEX_HEI);
+			// int ycolor = y * 256 / TEX_WID;
+			int xycolor = y * 128 / TEX_HEI + x * 128 / TEX_HEI;
+			info->texture[0][TEX_WID * y + x] = 65536 * 254 * (x != y && x != TEX_WID - y); //flat red texture with black cross
+			info->texture[1][TEX_WID * y + x] = 65536 * 192 * (x % 16 && y % 16); //red bricks
+			info->texture[2][TEX_WID * y + x] = 256 * xycolor + 65536 * xycolor; //sloped yellow gradient
+			info->texture[3][TEX_WID * y + x] = xorcolor + 256 * xorcolor + 65536 * xorcolor; //xor greyscale
+		}
+	}
+}
+
 t_info	*get_info_start(char **av)
 {
 	t_info	*info;
@@ -76,6 +93,7 @@ t_info	*get_info_start(char **av)
 	info->map = parser(map_fd);
 	find_start_point(info);
 	info->mlx = mlx_init();
+	get_texture(info);
 	info->dirX = -1;
 	info->dirY = 0;
 	info->planeX = 0;
