@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:41:21 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/15 17:26:12 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/15 19:36:01 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,29 @@ void	get_texture(t_info *info)
 	}
 }
 
+void	find_start_dir(t_info *info)
+{
+	int	user_dir;
+
+	user_dir = info->map->user_dir;
+	if (user_dir == 'E' || user_dir == 'W')
+	{
+		if (user_dir == 'E')
+			info->dirX = 1;
+		else
+			info->dirX = -1;
+		info->planeY = -0.66;
+	}
+	if (user_dir == 'N' || user_dir == 'S')
+	{
+		if (user_dir == 'N')
+			info->dirY = -1;
+		else
+			info->dirY = 1;
+		info->planeX = 0.66;
+	}
+}
+
 t_info	*get_info_start(char **av)
 {
 	t_info	*info;
@@ -91,13 +114,16 @@ t_info	*get_info_start(char **av)
 	map_fd = open(av[1], O_RDONLY);
 	if_error_exit(map_fd == -1);
 	info->map = parser(map_fd);
-	find_start_point(info);
+	// find_start_point(info);
+	info->posX = info->map->user[1] + 0.5;
+	info->posY = info->map->user[0] + 0.5;
 	info->mlx = mlx_init();
 	get_texture(info);
-	info->dirX = -1;
+	info->dirX = 0;
 	info->dirY = 0;
 	info->planeX = 0;
-	info->planeY = -0.66;
+	info->planeY = 0;
+	find_start_dir(info);
 	info->moveSpeed = 0.1;
 	info->rotSpeed = 0.1;
 	info->win = mlx_new_window(info->mlx, WIN_WID, WIN_HEI, "cub3D");
@@ -109,7 +135,7 @@ int	exec_cub(char **av)
 	t_info	*info;
 
 	info = get_info_start(av);
-	make_image_put_window(info, draw_2D);
+	make_image_put_window(info, draw_3D);
 	mlx_hook(info->win, X_EVENT_KEY_PRESS, 0, key_press_handler, info);
 	mlx_loop(info->mlx);
 	return (0);
