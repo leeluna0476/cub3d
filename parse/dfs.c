@@ -6,7 +6,7 @@
 /*   By: seojilee <seojilee@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 14:44:33 by seojilee          #+#    #+#             */
-/*   Updated: 2024/03/15 14:45:43 by seojilee         ###   ########.fr       */
+/*   Updated: 2024/03/15 14:55:21 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	if_user(int	**map, int col, int row, t_map *env)
 	{
 		env->user[0] = row;
 		env->user[1] = col;
+		env->user_dir = map[row][col];
 		recur(map, col, row, env);
 	}
 	else if (row != env->user[0] || col != env->user[1])
