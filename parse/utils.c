@@ -6,7 +6,7 @@
 /*   By: seojilee <seojilee@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 19:51:10 by seojilee          #+#    #+#             */
-/*   Updated: 2024/03/14 15:47:34 by seojilee         ###   ########.fr       */
+/*   Updated: 2024/03/15 15:19:53 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void	free_env(t_map *env)
 	free(env->south);
 	free(env->west);
 	free(env->east);
+	free_ipptr(env->map, env->height);
+	free(env);
 }
 
 void	if_error_exit(int exp)

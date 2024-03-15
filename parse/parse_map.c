@@ -6,7 +6,7 @@
 /*   By: seojilee <seojilee@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 14:54:22 by seojilee          #+#    #+#             */
-/*   Updated: 2024/03/15 14:55:30 by seojilee         ###   ########.fr       */
+/*   Updated: 2024/03/15 15:21:29 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	main(int ac, char **av)
 	// if no arg or too many args
 	if_error_exit(ac != 2);
 
-	atexit(leaks);
+//	atexit(leaks);
 	map_fd = open(av[1], O_RDONLY);
 	// if no such map
 	if_error_exit(map_fd == -1);
