@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:39:40 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/18 11:13:00 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/18 12:22:39 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ int	get_wall_num(t_cal *cal)
 	}
 	else
 	{
-		if (cal->ray_dir_y < 0)
+		if (cal->ray_dir_y > 0)
 			return (2);
 		else
 			return (3);
@@ -145,11 +145,11 @@ int	get_tex_x(t_cal *cal, t_info *info)
 	else
 		wall_x = info->posX + cal->ray_dist * cal->ray_dir_x;
 	wall_x -= floor((wall_x));
-	tex_x = (int)(wall_x * (double)(TEX_WID));
-	if (cal->side == 0 && cal->ray_dir_x > 0)
-		tex_x = TEX_WID - tex_x - 1;
-	if (cal->side == 1 && cal->ray_dir_y < 0)
-		tex_x = TEX_WID - tex_x - 1;
+	tex_x = (int)(wall_x * (double)(info->tex_imgs[0]->wid));
+	if (cal->side == 0 && cal->ray_dir_x < 0)
+		tex_x = info->tex_imgs[0]->wid - tex_x - 1;
+	if (cal->side == 1 && cal->ray_dir_y > 0)
+		tex_x = info->tex_imgs[0]->wid - tex_x - 1;
 	return (tex_x);
 }
 
@@ -159,19 +159,17 @@ void	draw_wall_texture(int draw_start, int draw_end, t_cal *cal, t_info *info)
 	int		tex_y;
 	double	step;
 	double	tex_pos;
-	int	y;
+	int		y;
 
 	tex_x = get_tex_x(cal, info);
-	// How much to increase the texture coordinate per screen pixel
-	step = 1.0 * TEX_HEI / cal->line_hei;
-	// Starting texture coordinate
+	step = 1.0 * info->tex_imgs[0]->hei / cal->line_hei;
 	tex_pos = (draw_start - WIN_HEI / 2 + cal->line_hei / 2) * step;
 	y = draw_start;
 	while (y < draw_end)
 	{
-		tex_y = (int)tex_pos & (TEX_HEI - 1);
+		tex_y = (int)tex_pos & (info->tex_imgs[0]->hei - 1);
 		tex_pos += step;
-		pixel_put(get_dot(cal->x, y), info->texture[get_wall_num(cal)][TEX_HEI * tex_y + tex_x], info);
+		pixel_put(get_dot(cal->x, y), info->texture[get_wall_num(cal)][info->tex_imgs[0]->hei * tex_y + tex_x], info);
 		y++;
 	}
 }

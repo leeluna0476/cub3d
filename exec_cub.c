@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:41:21 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/15 19:40:00 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/18 12:22:29 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <stdlib.h>
 #include "structs.h"
 #include "parse/parse.h"
+#include "libft/libft.h"
 
 void	pixel_put(t_dot *dot, int color, t_info *info);
 t_dot	*get_dot(int x, int y);
@@ -42,22 +43,41 @@ void	make_image_put_window(t_info *info, void (*draw_map)(t_info *info))
 		info->win, image->img_ptr, 0, 0);
 }
 
+void	load_image(t_info *info, char *path, int tex_num)
+{
+	t_tex_img	*img;
+	int			y;
+	int			x;
+
+	img = (t_tex_img *)malloc(sizeof(t_tex_img));
+	img->img_ptr = mlx_xpm_file_to_image(info->mlx, path, &img->wid, &img->hei);
+	img->addr = (int *)mlx_get_data_addr(img->img_ptr, &img->bits_per_pixel, &img->line_length, &img->endian);
+	info->texture[tex_num] = (int *)malloc(sizeof(int) * img->hei * img->wid);
+	y = 0;
+	while (y < img->hei)
+	{
+		x = 0;
+		while (x < img->wid)
+		{
+			info->texture[tex_num][img->wid * y + x] = img->addr[img->wid * y + x];
+			x++;
+		}
+		y++;
+	}
+	info->tex_imgs[tex_num] = img;
+	mlx_destroy_image(info->mlx, img->img_ptr);
+}
+
+
 void	get_texture(t_info *info)
 {
-	for (int x = 0; x < TEX_WID; x++)
-	{
-		for (int y = 0; y < TEX_HEI; y++)
-		{
-			int xorcolor = (x * 256 / TEX_WID) ^ (y * 256 / TEX_HEI);
-			// int ycolor = y * 256 / TEX_WID;
-			int xycolor = y * 128 / TEX_HEI + x * 128 / TEX_HEI;
-			info->texture[0][TEX_WID * y + x] = 65536 * 254 * (x != y && x != TEX_WID - y); //flat red texture with black cross
-			info->texture[1][TEX_WID * y + x] = 65536 * 192 * (x % 16 && y % 16); //red bricks
-			info->texture[2][TEX_WID * y + x] = 256 * xycolor + 65536 * xycolor; //sloped yellow gradient
-			info->texture[3][TEX_WID * y + x] = xorcolor + 256 * xorcolor + 65536 * xorcolor; //xor greyscale
-		}
-	}
+	info->texture = (int **)malloc(sizeof(int *) * 4);
+	load_image(info, info->map->east, 0);
+	load_image(info, info->map->west, 1);
+	load_image(info, info->map->south, 2);
+	load_image(info, info->map->north, 3);
 }
+
 
 void	find_start_dir(t_info *info)
 {
