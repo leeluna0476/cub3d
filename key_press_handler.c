@@ -6,18 +6,11 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:41:21 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/18 15:18:30 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/18 15:35:45 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include "key_macos.h"
-#include <math.h>
-#include "structs.h"
-
-void	draw_2d(t_info *info);
-void	draw_3d(t_info	*info);
-void	make_image_put_window(t_info *info, void (*draw_map)(t_info *info));
+#include "key_press_handler.h"
 
 int	go_front_back(int key, t_info *info)
 {
