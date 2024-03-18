@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:39:40 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/18 12:22:39 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/18 12:30:35 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ int	get_wall_num(t_cal *cal)
 {
 	if (cal->side == 0)
 	{
-		if (cal->ray_dir_x < 0)
+		if (cal->ray_dir_x > 0)
 			return (0);
 		else
 			return (1);
