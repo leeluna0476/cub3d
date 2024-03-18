@@ -4,9 +4,10 @@ CC=cc
 CFLAGS=-Wall -Wextra -Werror -g
 CLIB=-lmlx -framework OpenGL -framework Appkit
 SRCS=\
+	parse/dfs.c \
 	parse/discriminate.c \
 	parse/parse_map_utils.c \
-	parse/check_map_effect.c \
+	parse/check_map_validity.c \
 	parse/parse_map.c \
 	parse/parse_texture.c \
 	parse/utils.c \

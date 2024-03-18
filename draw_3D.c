@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:39:40 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/15 19:36:39 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/18 11:13:00 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,10 @@ void	get_ray_dist_and_line_hei(t_cal *cal, t_info *info)
 		cal->ray_dist = (cal->map_x - info->posX + (1 - cal->step_x) / 2) / cal->ray_dir_x;
 	else
 		cal->ray_dist = (cal->map_y - info->posY + (1 - cal->step_y) / 2) / cal->ray_dir_y;
-	cal->line_hei = (int)(WIN_HEI / cal->ray_dist);
+	if (cal->ray_dist == 0)
+		cal->line_hei = WIN_HEI;
+	else
+		cal->line_hei = (int)(WIN_HEI / cal->ray_dist);
 }
 
 void	exec_dda(t_cal *cal, t_info *info)
@@ -132,7 +135,6 @@ int	get_wall_num(t_cal *cal)
 	}
 }
 
-
 int	get_tex_x(t_cal *cal, t_info *info)
 {
 	double	wall_x;
@@ -153,10 +155,10 @@ int	get_tex_x(t_cal *cal, t_info *info)
 
 void	draw_wall_texture(int draw_start, int draw_end, t_cal *cal, t_info *info)
 {
-	int	tex_x;
-	int	tex_y;
-	int	step;
-	int	tex_pos;
+	int		tex_x;
+	int		tex_y;
+	double	step;
+	double	tex_pos;
 	int	y;
 
 	tex_x = get_tex_x(cal, info);
@@ -209,8 +211,8 @@ void	draw_raycast(t_cal *cal, t_info *info)
 	draw_end = cal->line_hei / 2 + WIN_HEI / 2;
 	if (draw_end >= WIN_HEI)
 		draw_end = WIN_HEI - 1;
-	// draw_wall_texture(draw_start, draw_end, cal, info);
-	draw_untexture(draw_start, draw_end, cal, info);
+	draw_wall_texture(draw_start, draw_end, cal, info);
+	// draw_untexture(draw_start, draw_end, cal, info);
 }
 
 void	draw_3D(t_info	*info)

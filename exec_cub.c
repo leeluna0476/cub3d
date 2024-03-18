@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:41:21 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/15 19:36:01 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/15 19:40:00 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,29 +40,6 @@ void	make_image_put_window(t_info *info, void (*draw_map)(t_info *info))
 	draw_map(info);
 	mlx_put_image_to_window(info->mlx,
 		info->win, image->img_ptr, 0, 0);
-}
-
-void	find_start_point(t_info *info)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (y < info->map->height)
-	{
-		x = 0;
-		while (x < info->map->width)
-		{
-			if (info->map->map[y][x] == 'N')
-			{
-				info->posX = x + 0.5;
-				info->posY = y + 0.5;
-				return ;
-			}
-			x++;
-		}
-		y++;
-	}
 }
 
 void	get_texture(t_info *info)
@@ -114,7 +91,6 @@ t_info	*get_info_start(char **av)
 	map_fd = open(av[1], O_RDONLY);
 	if_error_exit(map_fd == -1);
 	info->map = parser(map_fd);
-	// find_start_point(info);
 	info->posX = info->map->user[1] + 0.5;
 	info->posY = info->map->user[0] + 0.5;
 	info->mlx = mlx_init();
