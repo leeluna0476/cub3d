@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   draw_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/12 12:42:59 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/18 14:52:22 by yegkim           ###   ########.fr       */
+/*   Created: 2023/12/11 16:02:24 by yegkim            #+#    #+#             */
+/*   Updated: 2024/03/18 15:32:09 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "parse/parse.h"
+#include "draw_utils.h"
 
-int	exec_cub(char **av);
-
-void	error_exit(char *str)
+int	create_argb(int a, int r, int g, int b)
 {
-	write(2, str, ft_strlen(str));
-	exit(1);
+	return (a << 24 | r << 16 | g << 8 | b);
 }
 
-void	*null_guard(void *ptr)
+void	pixel_put(int x, int y, int color, t_info *info)
 {
-	if (!ptr)
-	{
-		error_exit("Error\n");
-	}
-	return (ptr);
-}
+	char		*dst;
+	t_image		*image;
 
-int	main(int argc, char **argv)
-{
-	if (argc != 2)
-		error_exit("argument number error\n");
-	exec_cub(argv);
-	return (0);
+	image = info->img;
+	if (x < 0 || y < 0 || x >= WIN_WID || y >= WIN_HEI)
+		return ;
+	dst = image->addr + (y * image->line_length
+			+ x * (image->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
 }

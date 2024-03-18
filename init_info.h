@@ -1,39 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_info.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/12 12:42:59 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/18 14:52:22 by yegkim           ###   ########.fr       */
+/*   Created: 2023/12/11 16:04:29 by yegkim            #+#    #+#             */
+/*   Updated: 2024/03/18 14:58:18 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "parse/parse.h"
+#ifndef INIT_INFO_H
+# define INIT_INFO_H
 
-int	exec_cub(char **av);
+# include <mlx.h>
+# include <stdlib.h>
+# include "structs.h"
+# include "parse/parse.h"
 
-void	error_exit(char *str)
-{
-	write(2, str, ft_strlen(str));
-	exit(1);
-}
+t_map	*parser(int map_fd);
+void	*null_guard(void *ptr);
 
-void	*null_guard(void *ptr)
-{
-	if (!ptr)
-	{
-		error_exit("Error\n");
-	}
-	return (ptr);
-}
-
-int	main(int argc, char **argv)
-{
-	if (argc != 2)
-		error_exit("argument number error\n");
-	exec_cub(argv);
-	return (0);
-}
+#endif

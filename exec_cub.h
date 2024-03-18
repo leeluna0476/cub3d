@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   exec_cub.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/12 12:42:59 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/18 14:52:22 by yegkim           ###   ########.fr       */
+/*   Created: 2023/12/11 16:04:29 by yegkim            #+#    #+#             */
+/*   Updated: 2024/03/18 15:18:24 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "parse/parse.h"
+#ifndef EXEC_CUB_H
+# define EXEC_CUB_H
 
-int	exec_cub(char **av);
+# include <mlx.h>
+# include <stdlib.h>
+# include "structs.h"
 
-void	error_exit(char *str)
-{
-	write(2, str, ft_strlen(str));
-	exit(1);
-}
+int		key_press_handler(int key, t_info *info);
+void	draw_2d(t_info *info);
+void	draw_3d(t_info	*info);
+t_info	*init_info(char **av);
+void	*null_guard(void *ptr);
 
-void	*null_guard(void *ptr)
-{
-	if (!ptr)
-	{
-		error_exit("Error\n");
-	}
-	return (ptr);
-}
-
-int	main(int argc, char **argv)
-{
-	if (argc != 2)
-		error_exit("argument number error\n");
-	exec_cub(argv);
-	return (0);
-}
+#endif

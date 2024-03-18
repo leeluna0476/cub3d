@@ -1,39 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   draw_raycast.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/12 12:42:59 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/18 14:52:22 by yegkim           ###   ########.fr       */
+/*   Created: 2023/12/11 16:04:29 by yegkim            #+#    #+#             */
+/*   Updated: 2024/03/18 15:29:20 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "parse/parse.h"
+#ifndef DRAW_RAYCAST_H
+# define DRAW_RAYCAST_H
 
-int	exec_cub(char **av);
+# include "structs.h"
+# include <math.h>
+# include <mlx.h>
 
-void	error_exit(char *str)
-{
-	write(2, str, ft_strlen(str));
-	exit(1);
-}
+void	pixel_put(int x, int y, int color, t_info *info);
 
-void	*null_guard(void *ptr)
-{
-	if (!ptr)
-	{
-		error_exit("Error\n");
-	}
-	return (ptr);
-}
-
-int	main(int argc, char **argv)
-{
-	if (argc != 2)
-		error_exit("argument number error\n");
-	exec_cub(argv);
-	return (0);
-}
+#endif

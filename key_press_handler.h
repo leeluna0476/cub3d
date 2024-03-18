@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   key_press_handler.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/12 12:42:59 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/18 14:52:22 by yegkim           ###   ########.fr       */
+/*   Created: 2023/12/11 16:04:29 by yegkim            #+#    #+#             */
+/*   Updated: 2024/03/18 15:30:59 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "parse/parse.h"
+#ifndef KEY_PRESS_HANDLER_H
+# define KEY_PRESS_HANDLER_H
 
-int	exec_cub(char **av);
+# include "structs.h"
+# include "key_macos.h"
+# include <mlx.h>
+# include <math.h>
 
-void	error_exit(char *str)
-{
-	write(2, str, ft_strlen(str));
-	exit(1);
-}
+void	draw_2d(t_info *info);
+void	draw_3d(t_info	*info);
+void	make_image_put_window(t_info *info, void (*draw_map)(t_info *info));
 
-void	*null_guard(void *ptr)
-{
-	if (!ptr)
-	{
-		error_exit("Error\n");
-	}
-	return (ptr);
-}
-
-int	main(int argc, char **argv)
-{
-	if (argc != 2)
-		error_exit("argument number error\n");
-	exec_cub(argv);
-	return (0);
-}
+#endif

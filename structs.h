@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 09:15:28 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/18 11:45:36 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/18 14:55:49 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 # define X_EVENT_KEY_EXIT	17
 # define WIN_WID 640
 # define WIN_HEI 640
-// # define TEX_WID 200
-// # define TEX_HEI 200
 # define COLOR_BLACK 0x000000
 # define COLOR_WHITE 0xFFFFFF
 # define COLOR_GRAY 0xA9A9A9
@@ -63,22 +61,40 @@ typedef struct s_dot
 	int	y;
 }		t_dot;
 
+typedef struct s_cal
+{
+	double	ray_dir_x;
+	double	ray_dir_y;
+	int		map_x;
+	int		map_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	int		step_x;
+	int		step_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	int		side;
+	double	ray_dist;
+	int		line_hei;
+	int		x;
+}	t_cal;
+
 typedef struct s_info
 {
-	double	posX; //현재 x의 위치
-	double	posY; //현재 y의 위치
-	double	dirX; //방향까지 포함하여 앞으로 갈 때의 X변화량(방향벡터)
-	double	dirY; //방향까지 포함하여, 앞으로 갈 때의 y변화량(방향벡터)
-	double	planeX; //카메라평면의 X값
-	double	planeY; //카메라평면의 Y값
-	void	*mlx;
-	void	*win;
-	t_map	*map;
-	t_image	*img;
-	int		**texture;
+	double		pos_x; //현재 x의 위치
+	double		pos_y; //현재 y의 위치
+	double		dir_x; //방향까지 포함하여 앞으로 갈 때의 X변화량(방향벡터)
+	double		dir_y; //방향까지 포함하여, 앞으로 갈 때의 y변화량(방향벡터)
+	double		plane_x; //카메라평면의 X값
+	double		plane_y; //카메라평면의 Y값
+	double		move_speed;
+	double		rot_speed;
+	void		*mlx;
+	void		*win;
+	t_map		*map;
+	t_image		*img;
+	int			**texture;
 	t_tex_img	*tex_imgs[4];
-	double	moveSpeed;
-	double	rotSpeed;
 }				t_info;
 
 #endif

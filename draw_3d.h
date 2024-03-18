@@ -1,39 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   draw_3d.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/12 12:42:59 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/18 14:52:22 by yegkim           ###   ########.fr       */
+/*   Created: 2023/12/11 16:04:29 by yegkim            #+#    #+#             */
+/*   Updated: 2024/03/18 15:33:23 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "parse/parse.h"
+#ifndef DRAW_3D_H
+# define DRAW_3D_H
 
-int	exec_cub(char **av);
+# include "structs.h"
+# include <math.h>
+# include <mlx.h>
 
-void	error_exit(char *str)
-{
-	write(2, str, ft_strlen(str));
-	exit(1);
-}
+void	*null_guard(void *ptr);
+void	draw_raycast(t_cal *cal, t_info *info);
 
-void	*null_guard(void *ptr)
-{
-	if (!ptr)
-	{
-		error_exit("Error\n");
-	}
-	return (ptr);
-}
-
-int	main(int argc, char **argv)
-{
-	if (argc != 2)
-		error_exit("argument number error\n");
-	exec_cub(argv);
-	return (0);
-}
+#endif
