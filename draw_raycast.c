@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:39:40 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/19 11:55:59 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/19 14:26:18 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	get_wall_num(t_cal *cal)
 	}
 }
 
-int	get_tex_x(t_cal *cal, t_info *info)
+int	get_tex_x(t_cal *cal, int wall_num, t_info *info)
 {
 	double	wall_x;
 	int		tex_x;
@@ -42,28 +42,29 @@ int	get_tex_x(t_cal *cal, t_info *info)
 	wall_x -= floor((wall_x));
 	tex_x = (int)(wall_x * (double)(info->tex_imgs[0]->wid));
 	if (cal->side == 0 && cal->ray_dir_x < 0)
-		tex_x = info->tex_imgs[0]->wid - tex_x - 1;
+		tex_x = info->tex_imgs[wall_num]->wid - tex_x - 1;
 	if (cal->side == 1 && cal->ray_dir_y > 0)
-		tex_x = info->tex_imgs[0]->wid - tex_x - 1;
+		tex_x = info->tex_imgs[wall_num]->wid - tex_x - 1;
 	return (tex_x);
 }
 
 void	draw_wall_texture(int draw_start, int draw_end,
 								t_cal *cal, t_info *info)
 {
+	int		w_num;
 	int		tex_x;
 	int		tex_y;
 	double	step;
 	double	tex_pos;
-	int		w_num;
 
-	tex_x = get_tex_x(cal, info);
-	step = 1.0 * info->tex_imgs[0]->hei / cal->line_hei;
-	tex_pos = (draw_start - WIN_HEI / 2 + cal->line_hei / 2) * step;
 	w_num = get_wall_num(cal);
+	tex_x = get_tex_x(cal, w_num, info);
+	step = 1.0 * info->tex_imgs[w_num]->hei / cal->line_hei;
+	tex_pos = (draw_start - WIN_HEI / 2 + cal->line_hei / 2) * step;
 	while (draw_start < draw_end)
 	{
-		tex_y = (int)tex_pos & (info->tex_imgs[w_num]->hei - 1);
+		// tex_y = (int)tex_pos & (info->tex_imgs[w_num]->hei - 1);
+		tex_y = (int)tex_pos;
 		tex_pos += step;
 		pixel_put(cal->x, draw_start,
 			info->texture[w_num][info->tex_imgs[w_num]->hei * tex_y + tex_x],
@@ -77,10 +78,10 @@ void	draw_raycast(t_cal *cal, t_info *info)
 	int	draw_start;
 	int	draw_end;
 
-	draw_start = -cal->line_hei / 2 + WIN_HEI / 2;
+	draw_start = WIN_HEI / 2 - cal->line_hei / 2;
 	if (draw_start < 0)
 		draw_start = 0;
-	draw_end = cal->line_hei / 2 + WIN_HEI / 2;
+	draw_end = WIN_HEI / 2 + cal->line_hei / 2;
 	if (draw_end >= WIN_HEI)
 		draw_end = WIN_HEI - 1;
 	draw_wall_texture(draw_start, draw_end, cal, info);

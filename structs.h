@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 09:15:28 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/19 11:58:23 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/19 14:27:38 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # define X_EVENT_KEY_PRESS	2
 # define X_EVENT_KEY_EXIT	17
-# define WIN_WID 640
+# define WIN_WID 820
 # define WIN_HEI 640
 # define COLOR_BLACK 0x000000
 # define COLOR_WHITE 0xFFFFFF
@@ -87,8 +87,8 @@ typedef struct s_user
 	double	dir_y;
 	double	plane_x;
 	double	plane_y;
-	double	move_speed;
-	double	rot_speed;
+	double	move_sp;
+	double	rot_sp;
 }	t_user;
 
 typedef struct s_info

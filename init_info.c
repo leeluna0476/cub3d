@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:41:21 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/19 11:56:29 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/19 14:24:19 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,21 +55,25 @@ void	apply_start_dir(t_user *user, t_info *info)
 	int	user_dir;
 
 	user_dir = info->map->user_dir;
-	if (user_dir == 'E' || user_dir == 'W')
+	if (user_dir == 'E')
 	{
-		if (user_dir == 'E')
-			user->dir_x = 1;
-		else
-			user->dir_x = -1;
+		user->dir_x = 1;
+		user->plane_y = 0.66;
+	}
+	else if (user_dir == 'W')
+	{
+		user->dir_x = -1;
 		user->plane_y = -0.66;
 	}
-	if (user_dir == 'N' || user_dir == 'S')
+	else if (user_dir == 'N')
 	{
-		if (user_dir == 'N')
-			user->dir_y = -1;
-		else
-			user->dir_y = 1;
+		user->dir_y = -1;
 		user->plane_x = 0.66;
+	}
+	else if (user_dir == 'S')
+	{
+		user->dir_y = 1;
+		user->plane_x = -0.66;
 	}
 }
 
@@ -84,8 +88,8 @@ void	get_user(t_info *info)
 	user->dir_y = 0;
 	user->plane_x = 0;
 	user->plane_y = 0;
-	user->move_speed = 0.1;
-	user->rot_speed = 0.1;
+	user->move_sp = 0.1;
+	user->rot_sp = 0.1;
 	apply_start_dir(user, info);
 	info->user = user;
 }
@@ -101,15 +105,6 @@ t_info	*init_info(char **av)
 	map_fd = open(av[1], O_RDONLY);
 	if_error_exit(map_fd == -1);
 	info->map = parser(map_fd);
-	// info->pos_x = info->map->user[1] + 0.5;
-	// info->pos_y = info->map->user[0] + 0.5;
-	// info->dir_x = 0;
-	// info->dir_y = 0;
-	// info->plane_x = 0;
-	// info->plane_y = 0;
-	// info->move_speed = 0.1;
-	// info->rot_speed = 0.1;
-	// apply_start_dir(info);
 	get_user(info);
 	get_texture(info);
 	return (info);

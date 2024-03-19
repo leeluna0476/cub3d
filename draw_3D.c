@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:39:40 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/19 11:23:11 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/19 14:15:02 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,12 @@ void	draw_floor_ceiling(t_info *info)
 	int	x;
 
 	y = 0;
-	// printf("floor : %d ceiling : %d\n", info->map->floor, info->map->ceiling);
 	while (y < WIN_HEI / 2)
 	{
 		x = 0;
 		while (x < WIN_WID)
 		{
-			pixel_put(x, y, info->map->floor, info);
+			pixel_put(x, y, info->map->ceiling, info);
 			x++;
 		}
 		y++;
@@ -34,7 +33,7 @@ void	draw_floor_ceiling(t_info *info)
 		x = 0;
 		while (x < WIN_WID)
 		{
-			pixel_put(x, y, info->map->ceiling, info);
+			pixel_put(x, y, info->map->floor, info);
 			x++;
 		}
 		y++;

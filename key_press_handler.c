@@ -6,63 +6,11 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:41:21 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/19 11:52:49 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/19 14:05:28 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "key_press_handler.h"
-
-int	go_front_back(int key, t_info *info)
-{
-	double	move_x;
-	double	move_y;
-
-	if (key == K_W)
-	{
-		move_x = info->user->pos_x + info->user->dir_x * info->user->move_speed;
-		if (0.1 <= move_x && move_x < (double)info->map->width - 0.1 && info->map->map[(int)(info->user->pos_y)][(int)(move_x)] != 1)
-			info->user->pos_x = move_x;
-		move_y = info->user->pos_y + info->user->dir_y * info->user->move_speed;
-		if (0.1 <= move_y && move_y < (double)info->map->height - 0.1 && info->map->map[(int)(move_y)][(int)(info->user->pos_x)] != 1)
-			info->user->pos_y = move_y;
-	}
-	if (key == K_S)
-	{
-		move_x = info->user->pos_x - info->user->dir_x * info->user->move_speed;
-		if (0.1 <= move_x && (double)move_x <= info->map->width - 0.1 && info->map->map[(int)(info->user->pos_y)][(int)(move_x)] != 1)
-			info->user->pos_x = move_x;
-		move_y = info->user->pos_y - info->user->dir_y * info->user->move_speed;
-		if (0.1 <= move_y && (double)move_y < info->map->height - 0.1 && info->map->map[(int)(move_y)][(int)(info->user->pos_x)] != 1)
-			info->user->pos_y = move_y;
-	}
-	return (0);
-}
-
-int	go_left_right(int key, t_info *info)
-{
-	double	move_x;
-	double	move_y;
-
-	if (key == K_A)
-	{
-		move_x = info->user->pos_x + info->user->dir_y * info->user->move_speed;
-		if (0.1 <= (int)move_x && (double)move_x < info->map->width - 0.1 && info->map->map[(int)(info->user->pos_y)][(int)(move_x)] != 1)
-			info->user->pos_x = move_x;
-		move_y = info->user->pos_y - info->user->dir_x * info->user->move_speed;
-		if (0.1 <= (int)move_y && (double)move_y < info->map->height - 0.1 && info->map->map[(int)(move_y)][(int)(info->user->pos_x)] != 1)
-			info->user->pos_y = move_y;
-	}
-	if (key == K_D)
-	{
-		move_x = info->user->pos_x - info->user->dir_y * info->user->move_speed;
-		if (0.1 <= move_x && (double)move_x < info->map->width - 0.1 && info->map->map[(int)(info->user->pos_y)][(int)(move_x)] != 1)
-			info->user->pos_x = move_x;
-		move_y = info->user->pos_y + info->user->dir_x * info->user->move_speed;
-		if (0.1 <= (int)move_y && (double)move_y < info->map->height - 0.1 && info->map->map[(int)(move_y)][(int)(info->user->pos_x)] != 1)
-			info->user->pos_y = move_y;
-	}
-	return (0);
-}
 
 void	change_dir_left(t_info *info)
 {
@@ -73,14 +21,14 @@ void	change_dir_left(t_info *info)
 	user = info->user;
 	old_dir_x = user->dir_x;
 	user->dir_x
-		= user->dir_x * cos(-user->rot_speed) - user->dir_y * sin(-user->rot_speed);
+		= user->dir_x * cos(-user->rot_sp) - user->dir_y * sin(-user->rot_sp);
 	info->user->dir_y
-		= old_dir_x * sin(-user->rot_speed) + user->dir_y * cos(-user->rot_speed);
+		= old_dir_x * sin(-user->rot_sp) + user->dir_y * cos(-user->rot_sp);
 	old_plane_x = user->plane_x;
-	user->plane_x = user->plane_x * cos(-user->rot_speed) \
-		- user->plane_y * sin(-user->rot_speed);
-	user->plane_y = old_plane_x * sin(-user->rot_speed) \
-			+ user->plane_y * cos(-user->rot_speed);
+	user->plane_x = user->plane_x * cos(-user->rot_sp) \
+		- user->plane_y * sin(-user->rot_sp);
+	user->plane_y = old_plane_x * sin(-user->rot_sp) \
+			+ user->plane_y * cos(-user->rot_sp);
 }
 
 void	change_dir_right(t_info *info)
@@ -92,14 +40,14 @@ void	change_dir_right(t_info *info)
 	user = info->user;
 	old_dir_x = user->dir_x;
 	user->dir_x
-		= user->dir_x * cos(user->rot_speed) - user->dir_y * sin(user->rot_speed);
+		= user->dir_x * cos(user->rot_sp) - user->dir_y * sin(user->rot_sp);
 	info->user->dir_y
-		= old_dir_x * sin(user->rot_speed) + user->dir_y * cos(user->rot_speed);
+		= old_dir_x * sin(user->rot_sp) + user->dir_y * cos(user->rot_sp);
 	old_plane_x = user->plane_x;
-	user->plane_x = user->plane_x * cos(user->rot_speed) \
-			- user->plane_y * sin(user->rot_speed);
-	user->plane_y = old_plane_x * sin(user->rot_speed) \
-		+ user->plane_y * cos(user->rot_speed);
+	user->plane_x = user->plane_x * cos(user->rot_sp) \
+			- user->plane_y * sin(user->rot_sp);
+	user->plane_y = old_plane_x * sin(user->rot_sp) \
+		+ user->plane_y * cos(user->rot_sp);
 }
 
 int	key_press_handler(int key, t_info *info)

@@ -19,6 +19,7 @@ SRCS=\
 	draw_raycast.c \
 	draw_3d_cal.c \
 	draw_3d.c \
+	key_go_wasd.c \
 	key_press_handler.c \
 	init_info.c \
 	exec_cub.c \
