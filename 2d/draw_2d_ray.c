@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:39:40 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/18 15:06:11 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/19 11:57:12 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	draw_ray(double ray_dir_x, double ray_dir_y, t_info *info, double perWallDi
 
 	gap_x = (double)WIN_WID / (double)info->map->width;
 	gap_y = (double)WIN_HEI / (double)info->map->height;
-	user = get_dot(info->pos_x * gap_x, info->pos_y * gap_y);
-	draw_line(get_line(user, get_dot(info->pos_x * gap_x + ray_dir_x * gap_x * perWallDist, info->pos_y * gap_y + ray_dir_y * gap_y * perWallDist)), info, COLOR_RED);
+	user = get_dot(info->user->pos_x * gap_x, info->user->pos_y * gap_y);
+	draw_line(get_line(user, get_dot(info->user->pos_x * gap_x + ray_dir_x * gap_x * perWallDist, info->user->pos_y * gap_y + ray_dir_y * gap_y * perWallDist)), info, COLOR_RED);
 	// pixel_put(get_dot(info->plane_x * gap_x, info->plane_y * gap_y), COLOR_GREEN, info);
 }
 
@@ -40,11 +40,11 @@ void	draw_2D_ray(t_info	*info)
 	while (x < WIN_WID)
 	{
 		double cameraX = (2 * (double)x / (double)(WIN_WID)) - 1;
-		double ray_dir_x = info->dir_x + info->plane_x * cameraX;
-		double ray_dir_y = info->dir_y + info->plane_y * cameraX;
+		double ray_dir_x = info->user->dir_x + info->user->plane_x * cameraX;
+		double ray_dir_y = info->user->dir_y + info->user->plane_y * cameraX;
 		// printf("raydir x : %f, raydir y : %f\n", ray_dir_x, ray_dir_y);
-		int mapX = (int)info->pos_x;
-		int mapY = (int)info->pos_y;
+		int mapX = (int)info->user->pos_x;
+		int mapY = (int)info->user->pos_y;
 
 		//length of ray from current position to next x or y-side
 		double sideDistX;
@@ -64,22 +64,22 @@ void	draw_2D_ray(t_info	*info)
 		if (ray_dir_x < 0)
 		{
 			stepX = -1;
-			sideDistX = (info->pos_x - mapX) * deltaDistX;
+			sideDistX = (info->user->pos_x - mapX) * deltaDistX;
 		}
 		else
 		{
 			stepX = 1;
-			sideDistX = (double)(mapX + 1.0 - info->pos_x) * deltaDistX;
+			sideDistX = (double)(mapX + 1.0 - info->user->pos_x) * deltaDistX;
 		}
 		if (ray_dir_y < 0)
 		{
 			stepY = -1;
-			sideDistY = (info->pos_y - mapY) * deltaDistY;
+			sideDistY = (info->user->pos_y - mapY) * deltaDistY;
 		}
 		else
 		{
 			stepY = 1;
-			sideDistY = (double)(mapY + 1.0 - info->pos_y) * deltaDistY;
+			sideDistY = (double)(mapY + 1.0 - info->user->pos_y) * deltaDistY;
 		}
 		while (hit == 0)
 		{
@@ -101,9 +101,9 @@ void	draw_2D_ray(t_info	*info)
 				hit = 1;
 		}
 		if (side == 0)
-			perpWallDist = (mapX - info->pos_x + (1 - stepX) / 2) / ray_dir_x;
+			perpWallDist = (mapX - info->user->pos_x + (1 - stepX) / 2) / ray_dir_x;
 		else
-			perpWallDist = (mapY - info->pos_y + (1 - stepY) / 2) / ray_dir_y;
+			perpWallDist = (mapY - info->user->pos_y + (1 - stepY) / 2) / ray_dir_y;
 		draw_ray(ray_dir_x, ray_dir_y, info, perpWallDist);
 		x++;
 	}

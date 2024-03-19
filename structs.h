@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 09:15:28 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/18 14:55:49 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/19 11:58:23 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,19 +79,24 @@ typedef struct s_cal
 	int		x;
 }	t_cal;
 
+typedef struct s_user
+{
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+	double	move_speed;
+	double	rot_speed;
+}	t_user;
+
 typedef struct s_info
 {
-	double		pos_x; //현재 x의 위치
-	double		pos_y; //현재 y의 위치
-	double		dir_x; //방향까지 포함하여 앞으로 갈 때의 X변화량(방향벡터)
-	double		dir_y; //방향까지 포함하여, 앞으로 갈 때의 y변화량(방향벡터)
-	double		plane_x; //카메라평면의 X값
-	double		plane_y; //카메라평면의 Y값
-	double		move_speed;
-	double		rot_speed;
 	void		*mlx;
 	void		*win;
 	t_map		*map;
+	t_user		*user;
 	t_image		*img;
 	int			**texture;
 	t_tex_img	*tex_imgs[4];

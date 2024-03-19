@@ -17,6 +17,7 @@ SRCS=\
 	2D/draw_utils_2d.c \
 	draw_utils.c \
 	draw_raycast.c \
+	draw_3d_cal.c \
 	draw_3d.c \
 	key_press_handler.c \
 	init_info.c \

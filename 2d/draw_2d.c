@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:41:21 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/18 15:17:49 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/19 11:57:43 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ void	draw_2D_user(t_info *info, double gap_x, double gap_y)
 	int	mid_x;
 	int	mid_y;
 
-	mid_x = info->pos_x * gap_x;
-	mid_y = info->pos_y * gap_y;
+	mid_x = info->user->pos_x * gap_x;
+	mid_y = info->user->pos_y * gap_y;
 	draw_box(get_dot(mid_x - 4, mid_y -4), get_dot(mid_x + 4, mid_y + 4), COLOR_BLUE, info);
-	draw_line(get_line(get_dot(mid_x, mid_y), get_dot(mid_x + info->dir_x * 30, mid_y + info->dir_y * 30)), info, COLOR_RED);
+	draw_line(get_line(get_dot(mid_x, mid_y), get_dot(mid_x + info->user->dir_x * 30, mid_y + info->user->dir_y * 30)), info, COLOR_RED);
 }
 void	draw_cam(t_info *info)
 {
@@ -64,8 +64,8 @@ void	draw_cam(t_info *info)
 
 	gap_x = (double)WIN_WID / (double)info->map->width;
 	gap_y = (double)WIN_HEI / (double)info->map->height;
-	draw_line(get_line(get_dot((info->pos_x + info->dir_x - info->plane_x) * gap_x, (info->pos_y + info->dir_y - info->plane_y) * gap_y)
-	, get_dot((info->pos_x + info->dir_x + info->plane_x) * gap_x, (info->pos_y + info->dir_y + info->plane_y) * gap_y)), info, COLOR_GREEN);
+	draw_line(get_line(get_dot((info->user->pos_x + info->user->dir_x - info->user->plane_x) * gap_x, (info->user->pos_y + info->user->dir_y - info->user->plane_y) * gap_y)
+	, get_dot((info->user->pos_x + info->user->dir_x + info->user->plane_x) * gap_x, (info->user->pos_y + info->user->dir_y + info->user->plane_y) * gap_y)), info, COLOR_GREEN);
 }
 
 void	draw_2d(t_info *info)

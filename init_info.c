@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:41:21 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/18 15:11:32 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/19 11:56:29 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	get_texture(t_info *info)
 }
 
 
-void	apply_start_dir(t_info *info)
+void	apply_start_dir(t_user *user, t_info *info)
 {
 	int	user_dir;
 
@@ -58,19 +58,36 @@ void	apply_start_dir(t_info *info)
 	if (user_dir == 'E' || user_dir == 'W')
 	{
 		if (user_dir == 'E')
-			info->dir_x = 1;
+			user->dir_x = 1;
 		else
-			info->dir_x = -1;
-		info->plane_y = -0.66;
+			user->dir_x = -1;
+		user->plane_y = -0.66;
 	}
 	if (user_dir == 'N' || user_dir == 'S')
 	{
 		if (user_dir == 'N')
-			info->dir_y = -1;
+			user->dir_y = -1;
 		else
-			info->dir_y = 1;
-		info->plane_x = 0.66;
+			user->dir_y = 1;
+		user->plane_x = 0.66;
 	}
+}
+
+void	get_user(t_info *info)
+{
+	t_user	*user;
+
+	user = (t_user *)malloc(sizeof(t_user));
+	user->pos_x = info->map->user[1] + 0.5;
+	user->pos_y = info->map->user[0] + 0.5;
+	user->dir_x = 0;
+	user->dir_y = 0;
+	user->plane_x = 0;
+	user->plane_y = 0;
+	user->move_speed = 0.1;
+	user->rot_speed = 0.1;
+	apply_start_dir(user, info);
+	info->user = user;
 }
 
 t_info	*init_info(char **av)
@@ -79,20 +96,21 @@ t_info	*init_info(char **av)
 	int		map_fd;
 
 	info = (t_info *)null_guard(malloc(sizeof(t_info)));
+	info->mlx = mlx_init();
+	info->win = mlx_new_window(info->mlx, WIN_WID, WIN_HEI, "cub3D");
 	map_fd = open(av[1], O_RDONLY);
 	if_error_exit(map_fd == -1);
 	info->map = parser(map_fd);
-	info->mlx = mlx_init();
-	info->pos_x = info->map->user[1] + 0.5;
-	info->pos_y = info->map->user[0] + 0.5;
-	info->dir_x = 0;
-	info->dir_y = 0;
-	info->plane_x = 0;
-	info->plane_y = 0;
-	info->move_speed = 0.1;
-	info->rot_speed = 0.1;
-	apply_start_dir(info);
+	// info->pos_x = info->map->user[1] + 0.5;
+	// info->pos_y = info->map->user[0] + 0.5;
+	// info->dir_x = 0;
+	// info->dir_y = 0;
+	// info->plane_x = 0;
+	// info->plane_y = 0;
+	// info->move_speed = 0.1;
+	// info->rot_speed = 0.1;
+	// apply_start_dir(info);
+	get_user(info);
 	get_texture(info);
-	info->win = mlx_new_window(info->mlx, WIN_WID, WIN_HEI, "cub3D");
 	return (info);
 }
