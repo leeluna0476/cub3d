@@ -1,5 +1,5 @@
 # 벽의 높이 구하기
-$h = windowHeight$
+$h = mapHeight$
 
 $lineHeight = \frac{h}{perpWallDist}$
 
