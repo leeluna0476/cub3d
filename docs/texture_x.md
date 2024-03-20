@@ -7,9 +7,9 @@ $lineHeight = \frac{h}{perpWallDist}$
 
 높이를 구했다면 화면 중앙을 기준으로 수직선을 그리면 된다.
 
-$drawStart = \frac{-lineHeight}{2} + \frac{h}{2}$
+$drawStart = \frac{-lineHeight + h}{2}$
 
-$drawEnd = \frac{lineHeight}{2} + \frac{h}{2}$
+$drawEnd = \frac{lineHeight + h}{2}$
 
 만약 $drawStart$가 $0$ 미만이 되거나 $drawEnd$가 $h$ 이상이 된다면 화면 밖으로 이탈한 것이기 때문에 각각 $0$ 또는 $h - 1$로 보정한다.
 
