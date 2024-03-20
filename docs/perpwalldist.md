@@ -9,7 +9,7 @@ $perpWallDist = \frac{sideDist_y - playerPos_y}{rayDir_y}$
 
 예: $y$축과 수직인 선에 닿았을 경우
 
-$perpWallDist = \frac{sideDist_x - plaxerPos_x}{rayDir_x}$
+$perpWallDist = \frac{sideDist_x - playerPos_x}{rayDir_x}$
 
 ---
 
