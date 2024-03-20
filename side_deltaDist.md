@@ -55,9 +55,13 @@ $sideDist$ ***유도***
 
 처음으로 만나는 선에 따른 광선의 방향에 따라 두 가지로 나뉜다.
 
-$(rayDir_y > 0) b = mapPos_y + 1 - playerPos_y$
+$(rayDir_y > 0)$
 
-$(rayDir_y < 0) b = playerPos_y - mapPos_y$
+$b = mapPos_y + 1 - playerPos_y$
+
+$(rayDir_y < 0)$
+
+$b = playerPos_y - mapPos_y$
 
 $deltaDist_y$와 각 축에 수직인 직선들로 만들어진 삼각형과 $sieDist$와 각 축에 수직인 직선들로 만들어진 삼각형은 서로 닮음이다.
 
@@ -69,8 +73,12 @@ $sideDist_y = b deltaDist_y$
 
 최종적으로, $rayDir_y$의 방향에 따라 아래와 같이 구할 수 있다.
 
-$(rayDir_y > 0) sideDist_y = (mapPos_y + 1 - playerPos_y)(deltaDist_y)$
+$(rayDir_y > 0)$
 
-$(rayDir_y < 0) sideDist_y = (playerPos_y - mapPos_y)(deltaDist_y)$
+$sideDist_y = (mapPos_y + 1 - playerPos_y)(deltaDist_y)$
+
+$(rayDir_y < 0)$
+
+$sideDist_y = (playerPos_y - mapPos_y)(deltaDist_y)$
 
 $sideDist_x$**도 마찬가지로 구할 수 있다.**
