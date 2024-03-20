@@ -73,7 +73,7 @@ $deltaDist_y$와 각 축에 수직인 직선들로 만들어진 삼각형과 $si
 
 $sideDist_y : b = deltaDist_y : 1$
 
-$sideDist_y = b deltaDist_y$
+$sideDist_y = b \times deltaDist_y$
 
 최종적으로, $rayDir_y$의 방향에 따라 아래와 같이 구할 수 있다.
 
