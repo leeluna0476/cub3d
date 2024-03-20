@@ -49,7 +49,7 @@ $(rayDir_y > 0) sideDist_y = (mapPos_y + 1 - playerPos_y)(deltaDist_y)$
 
 $(rayDir_y < 0) sideDist_y = (playerPos_y - mapPos_y)(deltaDist_y)$
 
-초기 $sideDist$의 거리는 $deltaDist$와 정확히 똑같지 않을 수 있다.
+초기 $sideDist$의 길이는 $deltaDist$와 정확히 똑같지 않을 수 있다.
 
 이 값을 따로 구해서 $deltaDist$와 더해야 한다.
 
