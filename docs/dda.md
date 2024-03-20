@@ -1,6 +1,9 @@
 # 직선 그리기 (DDA 알고리즘)
 광선이 처음으로 만나는 격자(초기 sideDist)에 한 칸 이동할 때의 거리(deltaDist)를 더해가며 한 칸씩 이동하다 보면 정확하게 한 칸씩 이동하면서 벽에 부딪히는지 감지할 수 있다.
 
+$sideDist_x, deltaDist_x$ - $x$를 따라 이동하는 거리.
+$sideDist_y, deltaDist_y$ - $y$를 따라 이동하는 거리.
+
 ## deltaDist 구하기
 
 $deltaDist_x = |\frac{|rayDir|}{rayDir_x}|$
