@@ -15,6 +15,8 @@ $perpWallDist = \frac{sideDist_x - playerPos_x}{rayDir_x}$
 
 $perpWallDist$ *유도*
 
+예: $x$축과 수직인 선에 닿았을 경우
+
 $playerPos$에서 $x$축과 수평인 선을 긋고 충돌지점과 수직인 선을 그어 $b$를 가정한다. (선 $l1$)
 
 그리고 $playerDir$(유저의 방향벡터)의 끝점에서 카메라평면과 수평인 선($l2$)을 긋고 $sideDist$와의 교점에서부터 $l1$과 수직인 선을 긋는다.
