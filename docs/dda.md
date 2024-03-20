@@ -67,7 +67,7 @@ $(rayDir_y > 0) b = mapPos_y + 1 - playerPos_y$
 
 $(rayDir_y < 0) b = playerPos_y - mapPos_y$
 
-$deltaDist_y$와 각 축에 수직인 직선들로 만들어진 삼각형과 $sideDist$와 각 축에 수직인 직선들로 만들어진 삼각형은 서로 닮음이다.
+$deltaDist_y$와 각 축에 수직인 직선들로 만들어진 삼각형과 $sideDist_y$와 각 축에 수직인 직선들로 만들어진 삼각형은 서로 닮음이다.
 
 앞서 $deltaDist_y$도 구했고, $deltaDist_y$와 $sideDist_y$의 높이를 모두 알고 있으므로 이를 가지고 비례식을 세울 수 있다.
 
