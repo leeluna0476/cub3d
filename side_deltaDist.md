@@ -5,7 +5,7 @@ $deltaDist_x = |\frac{|rayDir|}{rayDir_x}|$
 
 $deltaDist_y = |\frac{|rayDir|}{rayDir_y}|$
 
-$deltaDist$* 유도*
+$deltaDist$ *유도*
 
 예: $deltaDist_y$
 - $deltaDist_y$의 시작점에서 $y$축에 수직인 직선과, 끝점에서 $x$축에 수직인 직선을 그어 교차점을 찍으면 삼각형이 만들어지는데, 이 삼각형은 광선의 방향벡터를 가지고 마찬가지로 각 축에 수직인 직선들을 그었을 때 만들어지는 삼각형과 닮음이다.
