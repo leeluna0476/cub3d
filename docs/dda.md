@@ -24,15 +24,15 @@ $a = \frac{rayDir_x}{rayDir_y}$
 $a$의 길이를 구했다. 그렇다면 $deltaDist_y$의 길이를 구해보자.
 $adjacent$와 $opposite$의 길이를 알고 있으니 피타고라스의 정리를 사용해서 $hypotenuse$가 되는 $deltaDist_y$의 길이를 구할 수 있다.
 
-$deltaDist_y = |\sqrta^2 + 1^2|$
+$deltaDist_y = |\sqrt(a^2 + 1^2)|$
 
-$deltaDist_y = |\sqrt\frac{rayDir_x}{rayDir_y}^2 + 1^2)|$
+$deltaDist_y = |\sqrt(\frac{rayDir_x}{rayDir_y}^2 + 1^2)|$
 
-$deltaDist_y = |\sqrt\frac{rayDir_x^2}{rayDir_y^2} + \frac{rayDir_y^2}{rayDir_y^2}|$
+$deltaDist_y = |\sqrt(\frac{rayDir_x^2}{rayDir_y^2} + \frac{rayDir_y^2}{rayDir_y^2})|$
 
-$deltaDist_y = |\frac{\sqrtrayDir_x^2 + rayDir_y^2}{\sqrtrayDir_y^2}|$
+$deltaDist_y = |\frac{\sqrt(rayDir_x^2 + rayDir_y^2)}{\sqrt(rayDir_y^2)}|$
 
-$deltaDist_y = |\frac{\sqrtrayDir_x^2 + rayDir_y^2}{rayDir_y}|$
+$deltaDist_y = |\frac{\sqrt(rayDir_x^2 + rayDir_y^2)}{rayDir_y}|$
 
 최종적으로, 아래와 같이 단순화할 수 있다.
 
