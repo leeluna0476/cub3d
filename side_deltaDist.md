@@ -73,4 +73,4 @@ $(rayDir_y > 0) sideDist_y = (mapPos_y + 1 - playerPos_y)(deltaDist_y)$
 
 $(rayDir_y < 0) sideDist_y = (playerPos_y - mapPos_y)(deltaDist_y)$
 
-$deltaDist_x$**도 마찬가지로 구할 수 있다.**
+$sideDist_x$**도 마찬가지로 구할 수 있다.**
