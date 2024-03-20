@@ -33,4 +33,4 @@ $b = sideDist_y - playerPos_y$
 
 최종적으로 아래와 같이 구할 수 있다.
 
-$perpWallDist = \frac{sideDist_y - playerPos_y}{rayDir_y}$
+$perpWallDist = \frac{sideDist_y - playerDir \times playerPos_y}{rayDir_y}$
