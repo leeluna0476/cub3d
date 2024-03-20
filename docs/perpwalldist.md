@@ -3,7 +3,13 @@
 
 이를 보정하기 위해서 카메라 평면으로부터 광선이 충돌한 지점까지의 수직선으로 일정한 길이를 구해야 한다.
 
+예: $x$축과 수직인 선에 닿았을 경우
+
 $perpWallDist = \frac{sideDist_y - playerPos_y}{rayDir_y}$
+
+예: $x$축과 수직인 선에 닿았을 경우
+
+$perpWallDist = \frac{sideDist_x - plaxerPos_x}{raxDir_x}$
 
 ---
 
@@ -34,3 +40,5 @@ $b = sideDist_y - playerPos_y$
 최종적으로 아래와 같이 구할 수 있다.
 
 $perpWallDist = \frac{(sideDist_y - playerPos_y) \times playerDir}{rayDir_y}$
+
+$y$**축에서 수직인 선에 닿았을 경우에도 동일하게 구할 수 있다.**
