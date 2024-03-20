@@ -1,9 +1,9 @@
 # 직선 그리기 (DDA 알고리즘)
 광선이 처음으로 만나는 격자(초기 sideDist)에 한 칸 이동할 때의 거리(deltaDist)를 더해가며 한 칸씩 이동하다 보면 정확하게 한 칸씩 이동하면서 벽에 부딪히는지 감지할 수 있다.
 
-$deltaDist_x = \abs(\frac{\abs(rayDir)}{rayDir_x})$
+$deltaDist_x = |\frac{|rayDir|}{rayDir_x}|$
 
-$deltaDist_y = \abs(\frac{\abs(rayDir)}{rayDir_y})$
+$deltaDist_y = |\frac{|rayDir|}{rayDir_y}|$
 
 *$deltaDist$ 유도*
 
@@ -20,16 +20,16 @@ $a = \frac{rayDir_x}{rayDir_y}$
 $a$의 길이를 구했다. 그렇다면 $deltaDistY$의 길이를 구해보자.
 $adjacent$와 $opposite$의 길이를 알고 있으니 피타고라스의 정리를 사용해서 $hypotenuse$가 되는 $deltaDistY$의 길이를 구할 수 있다.
 
-$deltaDistY = \abs(\sqrt(a^2 + 1^2))$
+$deltaDistY = |\sqrt(a^2 + 1^2)|$
 
-$deltaDistY = \abs(\sqrt((frac{rayDir_x}{rayDir_y})^2 + 1^2))$
+$deltaDistY = |\sqrt((frac{rayDir_x}{rayDir_y})^2 + 1^2)|$
 
-$deltaDistY = \abs(\sqrt(frac{rayDir_x^2}{rayDir_y^2} + frac{rayDir_y^2}{rayDir_y^2}))$
+$deltaDistY = |\sqrt(frac{rayDir_x^2}{rayDir_y^2} + frac{rayDir_y^2}{rayDir_y^2})|$
 
-$deltaDistY = \abs(\frac{\sqrt(rayDir_x^2) + \sqrt(rayDir_y^2)}{\sqrt(rayDir_y^2)})$
+$deltaDistY = |\frac{\sqrt(rayDir_x^2) + \sqrt(rayDir_y^2)}{\sqrt(rayDir_y^2)}|$
 
-$deltaDistY = \abs(\frac{\sqrt(rayDir_x^2) + \sqrt(rayDir_y^2)}{rayDir_y})$
+$deltaDistY = |\frac{\sqrt(rayDir_x^2) + \sqrt(rayDir_y^2)}{rayDir_y}|$
 
 최종적으로, 아래와 같이 단순화할 수 있다.
 
-$deltaDistY = \abs(\frac{\abs(rayDir) + \sqrt(rayDir_y^2)}{rayDir_y})$
+$deltaDistY = |\frac{|rayDir|}{rayDir_y}|$
