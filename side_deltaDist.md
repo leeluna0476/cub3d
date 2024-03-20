@@ -41,9 +41,9 @@ $deltaDist_y = |\frac{|rayDir|}{rayDir_y}|$
 $deltaDist_x$**도 마찬가지로 구할 수 있다.**
 
 ## sideDist 구하기
-$(raxDir_x > 0) sideDist_x = (mapPos_x + 1 - plaxerPos_x)(deltaDist_x)$
+$(raxDir_x > 0) sideDist_x = (mapPos_x + 1 - playerPos_x)(deltaDist_x)$
 
-$(raxDir_x < 0) sideDist_x = (plaxerPos_x - mapPos_x)(deltaDist_x)$
+$(raxDir_x < 0) sideDist_x = (playerPos_x - mapPos_x)(deltaDist_x)$
 
 $(rayDir_y > 0) sideDist_y = (mapPos_y + 1 - playerPos_y)(deltaDist_y)$
 
