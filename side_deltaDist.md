@@ -28,9 +28,9 @@ $deltaDist_y = |\sqrt(\frac{rayDir_x}{rayDir_y})^2 + 1^2)|$
 
 $deltaDist_y = |\sqrt(\frac{rayDir_x^2}{rayDir_y^2} + \frac{rayDir_y^2}{rayDir_y^2})|$
 
-$deltaDist_y = |\frac{\sqrt(rayDir_x^2) + \sqrt(rayDir_y^2)}{\sqrt(rayDir_y^2)}|$
+$deltaDist_y = |\frac{\sqrt(rayDir_x^2 + rayDir_y^2)}{\sqrt(rayDir_y^2)}|$
 
-$deltaDist_y = |\frac{\sqrt(rayDir_x^2) + \sqrt(rayDir_y^2)}{rayDir_y}|$
+$deltaDist_y = |\frac{\sqrt(rayDir_x^2 + rayDir_y^2)}{rayDir_y}|$
 
 최종적으로, 아래와 같이 단순화할 수 있다.
 
