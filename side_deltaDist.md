@@ -24,9 +24,9 @@ $adjacent$와 $opposite$의 길이를 알고 있으니 피타고라스의 정리
 
 $deltaDist_y = |\sqrt(a^2 + 1^2)|$
 
-$deltaDist_y = |\sqrt((frac{rayDir_x}{rayDir_y})^2 + 1^2)|$
+$deltaDist_y = |\sqrt(\frac{rayDir_x}{rayDir_y})^2 + 1^2)|$
 
-$deltaDist_y = |\sqrt(frac{rayDir_x^2}{rayDir_y^2} + frac{rayDir_y^2}{rayDir_y^2})|$
+$deltaDist_y = |\sqrt(\frac{rayDir_x^2}{rayDir_y^2} + \frac{rayDir_y^2}{rayDir_y^2})|$
 
 $deltaDist_y = |\frac{\sqrt(rayDir_x^2) + \sqrt(rayDir_y^2)}{\sqrt(rayDir_y^2)}|$
 
