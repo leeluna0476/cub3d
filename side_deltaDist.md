@@ -5,6 +5,8 @@ $deltaDist_x = |\frac{|rayDir|}{rayDir_x}|$
 
 $deltaDist_y = |\frac{|rayDir|}{rayDir_y}|$
 
+---
+
 $deltaDist$ *유도*
 
 예: $deltaDist_y$
@@ -33,3 +35,5 @@ $deltaDist_y = |\frac{\sqrt(rayDir_x^2) + \sqrt(rayDir_y^2)}{rayDir_y}|$
 최종적으로, 아래와 같이 단순화할 수 있다.
 
 $deltaDist_y = |\frac{|rayDir|}{rayDir_y}|$
+
+$deltaDist_x$**도 마찬가지로 구할 수 있다.**
