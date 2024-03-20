@@ -5,6 +5,8 @@
 
 $perpWallDist = \frac{sideDist_y - playerPos_y}{rayDir_y}$
 
+---
+
 $perpWallDist$ *유도*
 
 $playerPos$에서 $x$축과 수평인 선을 긋고 충돌지점과 수직인 선을 그어 $b$를 가정한다. (선 $l1$)
