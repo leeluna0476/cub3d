@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := all
 
 CC=cc
-CFLAGS=-Wall -Wextra -Werror -g
+CFLAGS=-Wall -Wextra -Werror
 CLIB=-lmlx -framework OpenGL -framework Appkit
 SRCS=\
 	parse/dfs.c \
@@ -19,6 +19,7 @@ SRCS=\
 	draw_raycast.c \
 	draw_3d_cal.c \
 	draw_3d.c \
+	mini_map.c \
 	key_go_wasd.c \
 	key_press_handler.c \
 	init_info.c \

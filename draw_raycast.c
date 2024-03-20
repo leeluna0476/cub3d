@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:39:40 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/19 14:26:18 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/20 15:55:33 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	get_tex_x(t_cal *cal, int wall_num, t_info *info)
 	else
 		wall_x = info->user->pos_x + cal->ray_dist * cal->ray_dir_x;
 	wall_x -= floor((wall_x));
-	tex_x = (int)(wall_x * (double)(info->tex_imgs[0]->wid));
+	tex_x = (int)(wall_x * (double)(info->tex_imgs[wall_num]->wid));
 	if (cal->side == 0 && cal->ray_dir_x < 0)
 		tex_x = info->tex_imgs[wall_num]->wid - tex_x - 1;
 	if (cal->side == 1 && cal->ray_dir_y > 0)
