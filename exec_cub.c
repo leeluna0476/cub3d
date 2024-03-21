@@ -34,6 +34,7 @@ int	exit_hook(void)
 int	exec_cub(char **av)
 {
 	t_info	*info;
+	char	*file_exp;
 
 	info = init_info(av);
 	make_image_put_window(info, draw_3d);
