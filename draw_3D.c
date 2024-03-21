@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:39:40 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/19 14:15:02 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/15 20:02:09 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	draw_floor_ceiling(t_info *info)
 		}
 		y++;
 	}
+
 	while (y < WIN_HEI)
 	{
 		x = 0;
@@ -52,6 +53,7 @@ void	draw_3d(t_info	*info)
 		cal = init_cal(cal, x, info);
 		exec_dda(cal, info);
 		draw_raycast(cal, info);
+		free(cal);
 		x++;
 	}
 }
