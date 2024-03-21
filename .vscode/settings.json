@@ -1,0 +1,14 @@
+{
+	"files.associations": {
+		"__node_handle": "c",
+		"structs.h": "c",
+		"stdlib.h": "c",
+		"mlx.h": "c",
+		"key_macos.h": "c",
+		"math.h": "c",
+		"stdio.h": "c",
+		"string.h": "c",
+		"exec_cub.h": "c",
+		"draw_3d.h": "c"
+	}
+}
