@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:02:24 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/14 14:20:07 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/18 12:46:43 by yegkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	bresenham_y_minus(t_line *line, t_info *info, int color)
 	df_plus = 2 * (line->width - line->height);
 	while (y <= line->dot_end->y)
 	{
-		pixel_put(get_dot(x, y), color, info);
+		pixel_put(x, y, color, info);
 		if (df_now < 0)
 			df_now = df_now + df_minus;
 		else
@@ -57,7 +57,7 @@ int	bresenham_x_minus(t_line *line, t_info *info, int color)
 	df_plus = 2 * (line->height - line->width);
 	while (x <= line->dot_end->x)
 	{
-		pixel_put(get_dot(x, y), color, info);
+		pixel_put(x, y, color, info);
 		if (df_now < 0)
 			df_now = df_now + df_minus;
 		else
@@ -86,7 +86,7 @@ int	bresenham_x_plus(t_line *line, t_info *info, int color)
 	df_plus = 2 * (line->height - line->width);
 	while (x <= line->dot_end->x)
 	{
-		pixel_put(get_dot(x, y), color, info);
+		pixel_put(x, y, color, info);
 		if (df_now < 0)
 			df_now = df_now + df_minus;
 		else
@@ -115,7 +115,7 @@ int	bresenham_y_plus(t_line *line, t_info *info, int color)
 	df_plus = 2 * (line->width - line->height);
 	while (y <= line->dot_end->y)
 	{
-		pixel_put(get_dot(x, y), color, info);
+		pixel_put(x, y, color, info);
 		if (df_now < 0)
 			df_now = df_now + df_minus;
 		else
