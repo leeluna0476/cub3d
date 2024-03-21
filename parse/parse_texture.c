@@ -6,7 +6,7 @@
 /*   By: seojilee <seojilee@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 19:51:03 by seojilee          #+#    #+#             */
-/*   Updated: 2024/03/15 14:49:01 by seojilee         ###   ########.fr       */
+/*   Updated: 2024/03/21 16:52:37 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	insert_value_flag(char **ptr, char *value, int *flag)
 
 void	insert_color_flag(int *ptr, int color[3], int *flag)
 {
-	*ptr = color[0] | color[1] | color[2];
+	*ptr = color[0] << 16 | color[1] << 8 | color[2];
 	*flag = 1;
 }
 
@@ -29,6 +29,7 @@ void	insert_texture(t_map *env, char *line, int flag[6])
 	char	type;
 	char	*value;
 	char	**split;
+	int		fd;
 
 	split = ft_split(line, ' ');
 	if_error_exit(!split);
@@ -37,8 +38,10 @@ void	insert_texture(t_map *env, char *line, int flag[6])
 		|| (type == 'N' && flag[0]) || (type == 'S' && flag[1]) \
 		|| (type == 'W' && flag[2]) || (type == 'E' && flag[3]));
 	value = ft_strdup(split[1]);
-	if_error_exit(!value);
 	value[ft_strlen(value) - 1] = '\0';
+	fd = open(value, O_RDONLY);
+	if_error_exit(!value || fd == -1);
+	close(fd);
 	if (type == 'N')
 		insert_value_flag(&(env->north), value, &(flag[0]));
 	else if (type == 'S')
@@ -50,6 +53,26 @@ void	insert_texture(t_map *env, char *line, int flag[6])
 	free_cpptr(split);
 }
 
+int	check_comma(char *line)
+{
+	char	*find;
+	int		count;
+
+	count = 0;
+	find = ft_strchr(line, ',');
+	while (find != NULL)
+	{
+		if (count > 2)
+			break ;
+		count++;
+		find++;
+		find = ft_strchr(find, ',');
+	}
+	if (count != 2)
+		return (-1);
+	return (0);
+}
+
 void	insert_color(t_map *env, char *line, int flag[6])
 {
 	char	type;
@@ -59,23 +82,22 @@ void	insert_color(t_map *env, char *line, int flag[6])
 
 	type = line[0];
 	line[ft_strlen(line) - 1] = '\0';
-	if_error_exit((type == 'F' && flag[4]) || (type == 'C' && flag[5]));
 	rgb = ft_split(line + 2, ',');
-	if (rgb)
+	if_error_exit(!rgb \
+			|| (type == 'F' && flag[4]) || (type == 'C' && flag[5]) \
+			|| check_comma(line) == -1);
+	i = 0;
+	while (rgb[i] && i < 3)
 	{
-		i = 0;
-		while (rgb[i] && i < 3)
-		{
-			color[i] = ft_atoi(rgb[i]);
-			if_error_exit(color[i] < 0 || color[i] > 255);
-			i++;
-		}
-		if_error_exit(rgb[i] || i < 3);
-		if (type == 'F')
-			insert_color_flag(&(env->floor), color, &(flag[4]));
-		else if (type == 'C')
-			insert_color_flag(&(env->ceiling), color, &(flag[5]));
+		color[i] = ft_atoi(rgb[i]);
+		if_error_exit(color[i] < 0 || color[i] > 255);
+		i++;
 	}
+	if_error_exit(rgb[i] || i < 3);
+	if (type == 'F')
+		insert_color_flag(&(env->floor), color, &(flag[4]));
+	else if (type == 'C')
+		insert_color_flag(&(env->ceiling), color, &(flag[5]));
 	free_cpptr(rgb);
 }
 

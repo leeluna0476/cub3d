@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:41:21 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/19 14:24:19 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/21 16:36:36 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,12 +99,12 @@ t_info	*init_info(char **av)
 	t_info	*info;
 	int		map_fd;
 
-	info = (t_info *)null_guard(malloc(sizeof(t_info)));
-	info->mlx = mlx_init();
-	info->win = mlx_new_window(info->mlx, WIN_WID, WIN_HEI, "cub3D");
 	map_fd = open(av[1], O_RDONLY);
 	if_error_exit(map_fd == -1);
+	info = (t_info *)null_guard(malloc(sizeof(t_info)));
 	info->map = parser(map_fd);
+	info->mlx = mlx_init();
+	info->win = mlx_new_window(info->mlx, WIN_WID, WIN_HEI, "cub3D");
 	get_user(info);
 	get_texture(info);
 	return (info);
