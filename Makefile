@@ -18,7 +18,7 @@ SRCS=\
 	draw_utils.c \
 	draw_raycast.c \
 	draw_3d_cal.c \
-	draw_3d.c \
+	draw_3D.c \
 	mini_map.c \
 	key_go_wasd.c \
 	key_press_handler.c \
