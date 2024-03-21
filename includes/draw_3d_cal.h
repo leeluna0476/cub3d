@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.h                                            :+:      :+:    :+:   */
+/*   draw_3d_cal.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojilee <seojilee@student.42seoul.>       +#+  +:+       +#+        */
+/*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/12 19:50:55 by seojilee          #+#    #+#             */
-/*   Updated: 2024/03/13 14:50:12 by seojilee         ###   ########.fr       */
+/*   Created: 2023/12/11 16:04:29 by yegkim            #+#    #+#             */
+/*   Updated: 2024/03/21 17:27:07 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSE_H
-# define PARSE_H
+#ifndef DRAW_3D_CAL_H
+# define DRAW_3D_CAL_H
 
-# include "parse_internal.h"
+# include "structs.h"
+# include <stdlib.h>
+# include <math.h>
+# include <mlx.h>
 
-void	if_error_exit(int exp);
+void	*null_guard(void *ptr);
+void	pixel_put(int x, int y, int color, t_info *info);
 
 #endif

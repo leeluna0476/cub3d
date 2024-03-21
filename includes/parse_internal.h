@@ -6,15 +6,15 @@
 /*   By: seojilee <seojilee@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 19:50:59 by seojilee          #+#    #+#             */
-/*   Updated: 2024/03/15 13:54:51 by seojilee         ###   ########.fr       */
+/*   Updated: 2024/03/21 17:23:52 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSE_INTERNAL_H
 # define PARSE_INTERNAL_H
 
-# include "struct.h"
-# include "../libft/libft.h"
+# include "structs.h"
+# include "../srcs/libft/libft.h"
 # include <fcntl.h>
 # include <stdio.h>
 

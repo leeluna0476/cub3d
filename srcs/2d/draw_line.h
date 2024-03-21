@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_3d.h                                          :+:      :+:    :+:   */
+/*   draw_line.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:04:29 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/19 11:26:33 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/21 17:40:17 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DRAW_3D_H
-# define DRAW_3D_H
+#ifndef DRAW_LINE_H
+# define DRAW_LINE_H
 
+# include <mlx.h>
+# include <stdlib.h>
 # include "structs.h"
 
+void	align_dot_start(int flag_y, t_line *line);
+t_dot	*get_dot(int x, int y);
 void	pixel_put(int x, int y, int color, t_info *info);
-t_cal	*init_cal(t_cal *cal, int x, t_info *info);
-void	exec_dda(t_cal *cal, t_info *info);
-void	draw_raycast(t_cal *cal, t_info *info);
 
 #endif

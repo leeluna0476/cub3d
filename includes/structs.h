@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 09:15:28 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/19 14:27:38 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/21 17:25:27 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,25 @@
 # define COLOR_GREEN 0x00FF00
 # define COLOR_RED 0xFF0000
 
-# include "parse/parse.h"
+typedef struct s_image		t_image;
+typedef struct s_tex_img	t_tex_img;
+typedef struct s_line		t_line;
+typedef struct s_dot		t_dot;
+typedef struct s_cal		t_cal;
+typedef struct s_user		t_user;
+typedef struct s_info		t_info;
+typedef struct s_map		t_map;
 
-typedef struct s_image
+struct s_image
 {
 	void	*img_ptr;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-}			t_image;
+};
 
-typedef struct s_tex_img
+struct s_tex_img
 {
 	void	*img_ptr;
 	int		*addr;
@@ -44,24 +51,24 @@ typedef struct s_tex_img
 	int		endian;
 	int		wid;
 	int		hei;
-}			t_tex_img;
+};
 
 
-typedef struct s_line
+struct s_line
 {
 	int				height;
 	int				width;
 	struct s_dot	*dot_start;
 	struct s_dot	*dot_end;
-}		t_line;
+};
 
-typedef struct s_dot
+struct s_dot
 {
 	int	x;
 	int	y;
-}		t_dot;
+};
 
-typedef struct s_cal
+struct s_cal
 {
 	double	ray_dir_x;
 	double	ray_dir_y;
@@ -77,9 +84,9 @@ typedef struct s_cal
 	double	ray_dist;
 	int		line_hei;
 	int		x;
-}	t_cal;
+};
 
-typedef struct s_user
+struct s_user
 {
 	double	pos_x;
 	double	pos_y;
@@ -89,9 +96,9 @@ typedef struct s_user
 	double	plane_y;
 	double	move_sp;
 	double	rot_sp;
-}	t_user;
+};
 
-typedef struct s_info
+struct s_info
 {
 	void		*mlx;
 	void		*win;
@@ -100,6 +107,25 @@ typedef struct s_info
 	t_image		*img;
 	int			**texture;
 	t_tex_img	*tex_imgs[4];
-}				t_info;
+};
+
+struct s_map
+{
+	char	*north;
+	char	*south;
+	char	*west;
+	char	*east;
+
+	int		floor;
+	int		ceiling;
+
+	int		**map;
+	int		width;
+	int		height;
+
+	int		flag;
+	int		user[2];
+	int		user_dir;
+};
 
 #endif

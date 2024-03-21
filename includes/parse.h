@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_info.h                                        :+:      :+:    :+:   */
+/*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seojilee <seojilee@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/11 16:04:29 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/18 14:58:18 by yegkim           ###   ########.fr       */
+/*   Created: 2024/03/12 19:50:55 by seojilee          #+#    #+#             */
+/*   Updated: 2024/03/21 17:24:49 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INIT_INFO_H
-# define INIT_INFO_H
+#ifndef PARSE_H
+# define PARSE_H
 
-# include <mlx.h>
-# include <stdlib.h>
-# include "structs.h"
-# include "parse/parse.h"
+# include "parse_internal.h"
 
+void	if_error_exit(int exp);
 t_map	*parser(int map_fd);
-void	*null_guard(void *ptr);
 
 #endif

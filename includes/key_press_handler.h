@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_line.h                                        :+:      :+:    :+:   */
+/*   key_press_handler.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:04:29 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/18 12:49:12 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/21 17:28:27 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DRAW_LINE_H
-# define DRAW_LINE_H
+#ifndef KEY_PRESS_HANDLER_H
+# define KEY_PRESS_HANDLER_H
 
+# include "structs.h"
+# include "key_macos.h"
 # include <mlx.h>
+# include <math.h>
 # include <stdlib.h>
-# include "../structs.h"
 
-void	align_dot_start(int flag_y, t_line *line);
-t_dot	*get_dot(int x, int y);
-void	pixel_put(int x, int y, int color, t_info *info);
+void	draw_2d(t_info *info);
+void	draw_3d(t_info	*info);
+int		go_front_back(int key, t_info *info);
+int		go_left_right(int key, t_info *info);
+void	make_image_put_window(t_info *info, void (*draw_map)(t_info *info));
 
 #endif

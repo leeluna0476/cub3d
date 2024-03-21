@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.h                                           :+:      :+:    :+:   */
+/*   init_info.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seojilee <seojilee@student.42seoul.>       +#+  +:+       +#+        */
+/*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/12 19:51:08 by seojilee          #+#    #+#             */
-/*   Updated: 2024/03/15 13:43:38 by seojilee         ###   ########.fr       */
+/*   Created: 2023/12/11 16:04:29 by yegkim            #+#    #+#             */
+/*   Updated: 2024/03/21 17:18:30 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_H
-# define STRUCT_H
+#ifndef INIT_INFO_H
+# define INIT_INFO_H
 
-typedef struct s_map	t_map;
+# include <mlx.h>
+# include <stdlib.h>
+# include "structs.h"
+# include "parse.h"
 
-struct s_map
-{
-	char	*north;
-	char	*south;
-	char	*west;
-	char	*east;
-
-	int		floor;
-	int		ceiling;
-
-	int		**map;
-	int		width;
-	int		height;
-
-	int		flag;
-	int		user[2];
-	int		user_dir;
-};
+void	*null_guard(void *ptr);
 
 #endif

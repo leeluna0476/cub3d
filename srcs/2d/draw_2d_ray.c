@@ -6,11 +6,11 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:39:40 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/19 11:57:12 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/21 17:39:53 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../structs.h"
+#include "structs.h"
 #include <math.h>
 #include <mlx.h>
 

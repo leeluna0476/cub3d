@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:41:21 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/19 11:57:43 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/21 17:40:07 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "../structs.h"
+#include "structs.h"
 
 void	pixel_put(int x, int y, int color, t_info *info);
 t_dot	*get_dot(int x, int y);
