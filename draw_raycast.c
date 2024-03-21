@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:39:40 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/20 15:55:33 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/21 16:07:48 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,4 @@ void	draw_raycast(t_cal *cal, t_info *info)
 	if (draw_end >= WIN_HEI)
 		draw_end = WIN_HEI - 1;
 	draw_wall_texture(draw_start, draw_end, cal, info);
-	free(cal);
 }

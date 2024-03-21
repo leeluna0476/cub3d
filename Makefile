@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := all
 
 CC=cc
-CFLAGS=-Wall -Wextra -Werror
+CFLAGS=-Wall -Wextra -Werror -fsanitize=address
 CLIB=-lmlx -framework OpenGL -framework Appkit
 SRCS=\
   parse/check_map_validity.c \
