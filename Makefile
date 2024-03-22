@@ -1,33 +1,35 @@
 .DEFAULT_GOAL := all
 
+
 CC=cc
-CFLAGS=-Wall -Wextra -Werror -fsanitize=address
+CFLAGS=-Wall -Wextra -Werror -fsanitize=address -I $(HEADERS)
 CLIB=-lmlx -framework OpenGL -framework Appkit
 SRCS=\
-  parse/check_map_validity.c \
-  parse/dfs.c \
-  parse/discriminate.c \
-  parse/parse_map.c \
-  parse/parse_map_utils.c \
-  parse/parse_texture.c \
-	parse/utils.c \
-	2D/draw_2d_ray.c \
-	2D/draw_2d.c \
-	2D/draw_line.c \
-	2D/draw_utils_2d.c \
-	draw_utils.c \
-	draw_raycast.c \
-	draw_3d_cal.c \
-	draw_3D.c \
-	mini_map.c \
-	key_go_wasd.c \
-	key_press_handler.c \
-	init_info.c \
-	exec_cub.c \
-	main.c
+	srcs/parse/check_map_validity.c \
+	srcs/parse/dfs.c \
+	srcs/parse/discriminate.c \
+	srcs/parse/parse_map.c \
+	srcs/parse/parse_map_utils.c \
+	srcs/parse/parse_texture.c \
+	srcs/parse/utils.c \
+	srcs/exec/draw_utils.c \
+	srcs/exec/draw_raycast.c \
+	srcs/exec/draw_3d_cal.c \
+	srcs/exec/draw_3D.c \
+	srcs/exec/mini_map.c \
+	srcs/exec/key_go_wasd.c \
+	srcs/exec/key_press_handler.c \
+	srcs/exec/init_info.c \
+	srcs/exec/exec_cub.c \
+	srcs/2d/draw_2d_ray.c \
+	srcs/2d/draw_2d.c \
+	srcs/2d/draw_line.c \
+	srcs/2d/draw_utils_2d.c \
+	srcs/main.c
 OBJS=$(SRCS:%.c=%.o)
+HEADERS=./includes
 NAME=cub3D
-LIBFT= ./libft/libft.a
+LIBFT= ./srcs/libft/libft.a
 
 all :  $(NAME)
 
@@ -38,10 +40,10 @@ $(NAME) : $(LIBFT) $(OBJS)
 	$(CC) $(CFLAGS) $(CLIB) $(LIBFT) $(OBJS) -o $@
 
 $(LIBFT) :
-	make -C ./libft
+	make -C ./srcs/libft
 
 clean :
-	make -C ./libft fclean
+	make -C ./srcs/libft fclean
 	rm -f $(OBJS)
 
 fclean : clean

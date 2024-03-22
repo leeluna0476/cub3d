@@ -6,14 +6,11 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:39:40 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/20 16:36:40 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/21 17:31:34 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_map.h"
-
-t_dot	*get_dot(int x, int y);
-void	pixel_put(int x, int y, int color, t_info *info);
 
 int	get_mini_color(int map_num)
 {

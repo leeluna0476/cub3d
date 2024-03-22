@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_press_handler.h                                :+:      :+:    :+:   */
+/*   draw_3d.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:04:29 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/19 14:00:29 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/21 17:27:44 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KEY_PRESS_HANDLER_H
-# define KEY_PRESS_HANDLER_H
+#ifndef DRAW_3D_H
+# define DRAW_3D_H
 
 # include "structs.h"
-# include "key_macos.h"
-# include <mlx.h>
-# include <math.h>
+# include <stdlib.h>
 
-void	draw_2d(t_info *info);
-void	draw_3d(t_info	*info);
-int		go_front_back(int key, t_info *info);
-int		go_left_right(int key, t_info *info);
-void	make_image_put_window(t_info *info, void (*draw_map)(t_info *info));
+void	pixel_put(int x, int y, int color, t_info *info);
+t_cal	*init_cal(t_cal *cal, int x, t_info *info);
+void	exec_dda(t_cal *cal, t_info *info);
+void	draw_raycast(t_cal *cal, t_info *info);
 
 #endif

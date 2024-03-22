@@ -6,11 +6,12 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:02:24 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/18 12:44:35 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/21 17:41:10 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "draw_utils_2d.h"
+#include "../libft/libft.h"
 
 t_dot	*get_dot(int x, int y)
 {
