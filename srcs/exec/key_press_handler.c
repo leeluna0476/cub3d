@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:41:21 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/22 16:02:16 by seojilee         ###   ########.fr       */
+/*   Updated: 2024/03/22 16:38:00 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,13 @@ int	key_press_handler(int key, t_info *info)
 		go_left_right(key, info);
 	else if (!info->mflag && key == K_AR_L)
 	{
+		info->user->rot_sp = 0.1;
 		change_dir_left(info);
-		info->user->rot_sp = 0.5;
 	}
 	else if (!info->mflag && key == K_AR_R)
 	{
+		info->user->rot_sp = 0.1;
 		change_dir_right(info);
-		info->user->rot_sp = 0.5;
 	}
 	else if (key == K_M)
 	{

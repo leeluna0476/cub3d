@@ -15,10 +15,10 @@ SRCS=\
 	srcs/exec/draw_raycast.c \
 	srcs/exec/draw_3d_cal.c \
 	srcs/exec/draw_3D.c \
-	srcs/exec/mini_map.c \
 	srcs/exec/key_go_wasd.c \
 	srcs/exec/key_press_handler.c \
 	srcs/exec/mouse_handler.c \
+	srcs/exec/mini_map.c \
 	srcs/exec/init_info.c \
 	srcs/exec/exec_cub.c \
 	srcs/2d/draw_2d_ray.c \
