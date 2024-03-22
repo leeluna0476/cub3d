@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:04:29 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/22 16:08:09 by seojilee         ###   ########.fr       */
+/*   Updated: 2024/03/22 17:03:12 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "mlx.h"
 # include <stdlib.h>
 # include "structs.h"
-# include "../srcs/libft/libft.h"
+# include "../../srcs/libft/libft.h"
 # include "parse.h"
 
 int		key_press_handler(int key, t_info *info);

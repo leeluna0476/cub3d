@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_internal.h                                   :+:      :+:    :+:   */
+/*   parse_internal_bonus.h                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seojilee <seojilee@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 19:50:59 by seojilee          #+#    #+#             */
-/*   Updated: 2024/03/21 17:23:52 by seojilee         ###   ########.fr       */
+/*   Updated: 2024/03/22 17:08:52 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSE_INTERNAL_H
 # define PARSE_INTERNAL_H
 
-# include "structs.h"
-# include "../srcs/libft/libft.h"
+# include "structs_bonus.h"
+# include "../../srcs/libft/libft.h"
 # include <fcntl.h>
-# include <stdio.h>
 
 int		is_direction(char *line);
 int		is_color(char *line);
