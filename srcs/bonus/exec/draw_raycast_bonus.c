@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:39:40 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/22 16:53:04 by seojilee         ###   ########.fr       */
+/*   Updated: 2024/03/22 17:24:55 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void	draw_wall_texture(int draw_start, int draw_end,
 	tex_pos = (draw_start - WIN_HEI / 2 + cal->line_hei / 2) * step;
 	while (draw_start < draw_end)
 	{
-		// tex_y = (int)tex_pos & (info->tex_imgs[w_num]->hei - 1);
 		tex_y = (int)tex_pos;
 		tex_pos += step;
 		pixel_put(cal->x, draw_start,

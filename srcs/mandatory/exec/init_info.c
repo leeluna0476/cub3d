@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:41:21 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/22 15:54:17 by seojilee         ###   ########.fr       */
+/*   Updated: 2024/03/22 17:18:50 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	load_image(t_info *info, char *path, int tex_num)
 	mlx_destroy_image(info->mlx, img->img_ptr);
 }
 
-
 void	get_texture(t_info *info)
 {
 	info->texture = (int **)malloc(sizeof(int *) * 4);
@@ -48,7 +47,6 @@ void	get_texture(t_info *info)
 	load_image(info, info->map->south, 2);
 	load_image(info, info->map->north, 3);
 }
-
 
 void	apply_start_dir(t_user *user, t_info *info)
 {

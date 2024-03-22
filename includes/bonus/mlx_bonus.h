@@ -42,9 +42,9 @@
 */
 
 
-#ifndef MLX_H
+#ifndef MLX_BONUS_H
 
-#define	MLX_H
+#define	MLX_BONUS_H
 
 
 void	*mlx_init();
@@ -146,4 +146,4 @@ int	mlx_do_key_autorepeatoff(void *mlx_ptr);
 int	mlx_do_key_autorepeaton(void *mlx_ptr);
 int	mlx_do_sync(void *mlx_ptr);
 
-#endif /* MLX_H */
+#endif /* MLX_BONUS_H */

@@ -6,12 +6,12 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:04:29 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/22 17:08:28 by seojilee         ###   ########.fr       */
+/*   Updated: 2024/03/22 17:15:48 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DRAW_3D_H
-# define DRAW_3D_H
+#ifndef DRAW_3D_BONUS_H
+# define DRAW_3D_BONUS_H
 
 # include "structs_bonus.h"
 # include <stdlib.h>

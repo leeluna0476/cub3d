@@ -59,7 +59,6 @@ endif
 
 NAME=cub3D
 LIBFT= ./srcs/libft/libft.a
-MLX= ./srcs/mlx/mlx.a
 
 all :  $(NAME)
 
@@ -68,17 +67,13 @@ bonus: $(NAME)
 %.o : %.c
 	$(CC) $(CFLAGS) -c $^ -o $@
 
-$(NAME) : $(LIBFT) $(MLX) $(OBJS)
+$(NAME) : $(LIBFT) $(OBJS)
 	$(CC) $(CFLAGS) $(CLIB) $(LIBFT) $(OBJS) -o $@
 
 $(LIBFT) :
 	make -C ./srcs/libft
 
-$(MLX) :
-	make -C ./srcs/mlx
-
 clean :
-	make -C ./srcs/mlx clean
 	make -C ./srcs/libft fclean
 	rm -f $(OBJS)
 

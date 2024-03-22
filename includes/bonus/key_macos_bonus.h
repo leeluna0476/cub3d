@@ -6,12 +6,12 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 17:40:13 by oouklich          #+#    #+#             */
-/*   Updated: 2024/03/22 17:08:02 by seojilee         ###   ########.fr       */
+/*   Updated: 2024/03/22 17:15:48 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KEY_MACOS_H
-# define KEY_MACOS_H
+#ifndef KEY_MACOS_BONUS_H
+# define KEY_MACOS_BONUS_H
 
 /*
 ** Keyboard LETTERS
@@ -24,7 +24,7 @@
 # define K_E 14
 # define K_F 3
 # define K_G 5
-# define K_H 4
+# define K_BONUS_H 4
 # define K_I 34
 # define K_J 38
 # define K_K 40

@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:39:40 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/21 17:31:34 by seojilee         ###   ########.fr       */
+/*   Updated: 2024/03/22 17:21:24 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,3 @@ void	draw_mini_map(t_info *info)
 	}
 	draw_mini_user(info, gap_x, gap_y);
 }
-

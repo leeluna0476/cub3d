@@ -6,12 +6,12 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:04:29 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/22 17:12:50 by seojilee         ###   ########.fr       */
+/*   Updated: 2024/03/22 17:15:48 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INIT_INFO_H
-# define INIT_INFO_H
+#ifndef INIT_INFO_BONUS_H
+# define INIT_INFO_BONUS_H
 
 # include <stdlib.h>
 # include "structs_bonus.h"

@@ -6,7 +6,7 @@
 /*   By: seojilee <seojilee@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 19:51:10 by seojilee          #+#    #+#             */
-/*   Updated: 2024/03/15 17:53:55 by seojilee         ###   ########.fr       */
+/*   Updated: 2024/03/22 17:22:52 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,24 @@ void	if_error_exit(int exp)
 		write(2, "Error\n", 6);
 		exit(1);
 	}
+}
+
+int	check_comma(char *line)
+{
+	char	*find;
+	int		count;
+
+	count = 0;
+	find = ft_strchr(line, ',');
+	while (find != NULL)
+	{
+		if (count > 2)
+			break ;
+		count++;
+		find++;
+		find = ft_strchr(find, ',');
+	}
+	if (count != 2)
+		return (-1);
+	return (0);
 }

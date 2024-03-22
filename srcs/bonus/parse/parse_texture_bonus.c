@@ -6,7 +6,7 @@
 /*   By: seojilee <seojilee@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 19:51:03 by seojilee          #+#    #+#             */
-/*   Updated: 2024/03/22 16:53:30 by seojilee         ###   ########.fr       */
+/*   Updated: 2024/03/22 17:26:40 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,26 +51,6 @@ void	insert_texture(t_map *env, char *line, int flag[6])
 	else
 		insert_value_flag(&(env->east), value, &(flag[3]));
 	free_cpptr(split);
-}
-
-int	check_comma(char *line)
-{
-	char	*find;
-	int		count;
-
-	count = 0;
-	find = ft_strchr(line, ',');
-	while (find != NULL)
-	{
-		if (count > 2)
-			break ;
-		count++;
-		find++;
-		find = ft_strchr(find, ',');
-	}
-	if (count != 2)
-		return (-1);
-	return (0);
 }
 
 void	insert_color(t_map *env, char *line, int flag[6])
