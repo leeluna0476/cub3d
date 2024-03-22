@@ -1,9 +1,8 @@
 .DEFAULT_GOAL := all
 
-
 CC=cc
-CFLAGS=-Wall -Wextra -Werror -fsanitize=address -I $(HEADERS)
-CLIB=-lmlx -framework OpenGL -framework Appkit
+CFLAGS=-Wall -Wextra -Werror -I $(HEADERS)
+CLIB=-lmlx -L./srcs/mlx -framework OpenGL -framework Appkit
 SRCS=\
 	srcs/parse/check_map_validity.c \
 	srcs/parse/dfs.c \
@@ -19,6 +18,7 @@ SRCS=\
 	srcs/exec/mini_map.c \
 	srcs/exec/key_go_wasd.c \
 	srcs/exec/key_press_handler.c \
+	srcs/exec/mouse_handler.c \
 	srcs/exec/init_info.c \
 	srcs/exec/exec_cub.c \
 	srcs/2d/draw_2d_ray.c \
@@ -30,19 +30,24 @@ OBJS=$(SRCS:%.c=%.o)
 HEADERS=./includes
 NAME=cub3D
 LIBFT= ./srcs/libft/libft.a
+MLX= ./srcs/mlx/mlx.a
 
 all :  $(NAME)
 
 %.o : %.c
 	$(CC) $(CFLAGS) -c $^ -o $@
 
-$(NAME) : $(LIBFT) $(OBJS)
+$(NAME) : $(LIBFT) $(MLX) $(OBJS)
 	$(CC) $(CFLAGS) $(CLIB) $(LIBFT) $(OBJS) -o $@
 
 $(LIBFT) :
 	make -C ./srcs/libft
 
+$(MLX) :
+	make -C ./srcs/mlx
+
 clean :
+	make -C ./srcs/mlx clean
 	make -C ./srcs/libft fclean
 	rm -f $(OBJS)
 

@@ -6,13 +6,13 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:39:40 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/21 17:39:53 by seojilee         ###   ########.fr       */
+/*   Updated: 2024/03/22 16:07:21 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structs.h"
 #include <math.h>
-#include <mlx.h>
+#include "mlx.h"
 
 t_dot	*get_dot(int x, int y);
 int		draw_line(t_line *line, t_info *info, int color);

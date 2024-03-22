@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:04:29 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/21 17:28:27 by seojilee         ###   ########.fr       */
+/*   Updated: 2024/03/22 16:08:09 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "structs.h"
 # include "key_macos.h"
-# include <mlx.h>
+# include "mlx.h"
 # include <math.h>
 # include <stdlib.h>
 
@@ -24,5 +24,9 @@ void	draw_3d(t_info	*info);
 int		go_front_back(int key, t_info *info);
 int		go_left_right(int key, t_info *info);
 void	make_image_put_window(t_info *info, void (*draw_map)(t_info *info));
+void	change_dir_left(t_info *info);
+void	change_dir_right(t_info *info);
+int		key_press_handler(int key, t_info *info);
+int		rotate_mouse(int x, int y, void *param);
 
 #endif

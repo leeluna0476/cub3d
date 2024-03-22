@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:41:21 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/21 16:36:36 by seojilee         ###   ########.fr       */
+/*   Updated: 2024/03/22 15:54:17 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ void	get_user(t_info *info)
 	user->dir_y = 0;
 	user->plane_x = 0;
 	user->plane_y = 0;
+	user->mouse_x = WIN_WID >> 1;
+	user->mouse_y = WIN_HEI >> 1;
 	user->move_sp = 0.1;
 	user->rot_sp = 0.1;
 	apply_start_dir(user, info);
@@ -105,6 +107,7 @@ t_info	*init_info(char **av)
 	info->map = parser(map_fd);
 	info->mlx = mlx_init();
 	info->win = mlx_new_window(info->mlx, WIN_WID, WIN_HEI, "cub3D");
+	info->mflag = 0;
 	get_user(info);
 	get_texture(info);
 	return (info);

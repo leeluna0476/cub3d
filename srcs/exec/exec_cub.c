@@ -6,11 +6,12 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:41:21 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/21 17:30:17 by seojilee         ###   ########.fr       */
+/*   Updated: 2024/03/22 15:41:16 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec_cub.h"
+#include "key_press_handler.h"
 
 void	make_image_put_window(t_info *info, void (*draw_map)(t_info *info))
 {
@@ -42,6 +43,7 @@ int	exec_cub(char **av)
 	make_image_put_window(info, draw_3d);
 	mlx_hook(info->win, X_EVENT_KEY_PRESS, 0, key_press_handler, info);
 	mlx_hook(info->win, 17, 0, exit_hook, 0);
+	mlx_hook(info->win, 6, 0, rotate_mouse, info);
 	mlx_loop(info->mlx);
 	return (0);
 }

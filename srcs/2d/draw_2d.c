@@ -6,11 +6,11 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:41:21 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/21 17:40:07 by seojilee         ###   ########.fr       */
+/*   Updated: 2024/03/22 16:07:06 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
+#include "mlx.h"
 #include <math.h>
 #include <string.h>
 #include <stdio.h>

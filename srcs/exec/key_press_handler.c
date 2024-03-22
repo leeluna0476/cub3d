@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:41:21 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/19 14:05:28 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/22 16:02:16 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,27 @@ int	key_press_handler(int key, t_info *info)
 {
 	if (key == K_W || key == K_S)
 		go_front_back(key, info);
-	if (key == K_A || key == K_D)
+	else if (key == K_A || key == K_D)
 		go_left_right(key, info);
-	if (key == K_AR_L)
+	else if (!info->mflag && key == K_AR_L)
+	{
 		change_dir_left(info);
-	if (key == K_AR_R)
+		info->user->rot_sp = 0.5;
+	}
+	else if (!info->mflag && key == K_AR_R)
+	{
 		change_dir_right(info);
-	if (key == K_ESC)
+		info->user->rot_sp = 0.5;
+	}
+	else if (key == K_M)
+	{
+		info->mflag = !info->mflag;
+		if (info->mflag == 0)
+			mlx_mouse_show();
+		else
+			mlx_mouse_hide();
+	}
+	else if (key == K_ESC)
 		exit(0);
 	mlx_destroy_image(info->mlx, info->img);
 	make_image_put_window(info, draw_3d);

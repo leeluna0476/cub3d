@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 09:15:28 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/21 17:25:27 by seojilee         ###   ########.fr       */
+/*   Updated: 2024/03/22 15:54:06 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ struct s_user
 	double	dir_y;
 	double	plane_x;
 	double	plane_y;
+	int		mouse_x;
+	int		mouse_y;
 	double	move_sp;
 	double	rot_sp;
 };
@@ -106,6 +108,7 @@ struct s_info
 	t_user		*user;
 	t_image		*img;
 	int			**texture;
+	int			mflag;
 	t_tex_img	*tex_imgs[4];
 };
 

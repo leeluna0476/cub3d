@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:04:29 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/18 15:29:20 by yegkim           ###   ########.fr       */
+/*   Updated: 2024/03/22 16:08:09 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "structs.h"
 # include <math.h>
-# include <mlx.h>
+# include "mlx.h"
 
 void	pixel_put(int x, int y, int color, t_info *info);
 
