@@ -6,7 +6,7 @@
 /*   By: yegkim <yegkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 09:15:28 by yegkim            #+#    #+#             */
-/*   Updated: 2024/03/22 15:54:06 by seojilee         ###   ########.fr       */
+/*   Updated: 2024/03/22 16:44:49 by seojilee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 
 typedef struct s_image		t_image;
 typedef struct s_tex_img	t_tex_img;
-typedef struct s_line		t_line;
 typedef struct s_dot		t_dot;
 typedef struct s_cal		t_cal;
 typedef struct s_user		t_user;
@@ -51,15 +50,6 @@ struct s_tex_img
 	int		endian;
 	int		wid;
 	int		hei;
-};
-
-
-struct s_line
-{
-	int				height;
-	int				width;
-	struct s_dot	*dot_start;
-	struct s_dot	*dot_end;
 };
 
 struct s_dot

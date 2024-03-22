@@ -21,10 +21,6 @@ SRCS=\
 	srcs/exec/mini_map.c \
 	srcs/exec/init_info.c \
 	srcs/exec/exec_cub.c \
-	srcs/2d/draw_2d_ray.c \
-	srcs/2d/draw_2d.c \
-	srcs/2d/draw_line.c \
-	srcs/2d/draw_utils_2d.c \
 	srcs/main.c
 OBJS=$(SRCS:%.c=%.o)
 HEADERS=./includes
